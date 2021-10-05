@@ -5,6 +5,7 @@ Test Teardown                               End Test
 
 *** Test Cases ***
 Login With Valid Credentials Should Pass
+    [Documentation]                         User log in with valid credentials
     Go to Sign In Page
     Input Email                             ${validEmail}
     Input Password                          ${validPassword}
