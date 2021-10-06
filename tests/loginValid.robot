@@ -4,10 +4,7 @@ Test Setup                                  Begin Test
 Test Teardown                               End Test
 
 *** Test Cases ***
-Login With Valid Credentials Should Pass
+Login With Valid Credentials
     [Documentation]                         User log in with valid credentials
-    Go to Sign In Page
-    Input Email                             ${validEmail}
-    Input Password                          ${validPassword}
-    Submit Credentials
+    Login With Credentials                  ${validEmail}    ${validPassword}
     Succesful Notice Should Be Appear

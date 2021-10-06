@@ -2,7 +2,7 @@
 Resource                    ../import.robot
 Test Setup                  Begin Test
 Test Teardown               End Test
-Test Template               Login with invalid credentials should fail
+Test Template               Login With Invalid Credentials
 
 *** Test Cases ***          email                   password
 Invalid Email               invalid                 ${validPassword}
