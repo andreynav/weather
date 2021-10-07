@@ -1,14 +1,14 @@
 *** Settings ***
-Resource                                ../import.robot
+Resource                                        ../import.robot
 
 *** Test Cases ***
 Sum of two variables
-    Add Two Numbers                     3  9
-    Sum Should Be Equal                 12
+    hwOneKeywords.Add Two Numbers               3   9
+    hwOneKeywords.Sum Should Be Equal           12
 
 Get difference between two timestamps
-    Get Current Time
-    Waiting for seconds                 2
-    Get Current Time
-    Difference Should Be Equal          2
+    hwOneKeywords.Get Current Time
+    hwOneKeywords.Waiting for seconds           2
+    hwOneKeywords.Get Current Time
+    hwOneKeywords.Difference Should Be Equal    2
 

@@ -1,15 +1,15 @@
 *** Settings ***
-Library                             SeleniumLibrary
+Library                                             SeleniumLibrary
 
 *** Variables ***
-${baseUrl}                          https://openweathermap.org/
+${baseUrl}                                          https://openweathermap.org/
 
 *** Keywords ***
 Begin Test
-    [Documentation]                 Sets browser and settings for window
-    Open Browser                    browser=Chrome
-    Maximize Browser Window
+    [Documentation]                                 Sets browser and settings for window
+    SeleniumLibrary.Open Browser                    browser=Chrome
+    SeleniumLibrary.Maximize Browser Window
 
 End Test
-    [Documentation]                 End test by closing the browser
-    Close Browser
+    [Documentation]                                 End test by closing the browser
+    SeleniumLibrary.Close Browser
