@@ -5,10 +5,10 @@ Test Teardown               main.End Test
 Test Template               loginPage.Login With Invalid Credentials
 
 *** Test Cases ***          email                   password
-Invalid Email               invalid                 ${validPassword}
-Invalid Password            ${validEmail}           invalid
+Invalid Email               invalid                 ${validCreds.password}
+Invalid Password            ${validCreds.email}     invalid
 Invalid Both                invalid                 invalid
-Empty Email                 ${EMPTY}                ${validPassword}
-Empty Password              ${validEmail}           ${EMPTY}
+Empty Email                 ${EMPTY}                ${validCreds.password}
+Empty Password              ${validCreds.email}     ${EMPTY}
 Empty Both                  ${EMPTY}                ${EMPTY}
 

@@ -14,8 +14,7 @@ ${alertTextValue}                                       Invalid Email or passwor
 ${successfulTitleLocator}                               //div[@class='panel-heading']
 ${successfulTextLocator}                                //div[@class='panel-heading']/following-sibling::div
 ${successfulTextValue}                                  Signed in successfully.
-${validEmail}                                           nav.testsw@gmail.com
-${validPassword}                                        Qwerty123$
+&{validCreds}                                           email=nav.testsw@gmail.com          password=Qwerty123$
 
 *** Keywords ***
 Login With Invalid Credentials
