@@ -2,7 +2,7 @@
 Library                                             SeleniumLibrary
 
 *** Variables ***
-${baseUrl}                                          https://openweathermap.org/
+${MAIN_URL}                                         https://openweathermap.org/
 
 *** Keywords ***
 Begin Test

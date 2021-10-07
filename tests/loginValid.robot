@@ -6,5 +6,5 @@ Test Teardown                                           main.End Test
 *** Test Cases ***
 Login With Valid Credentials
     [Documentation]                                     User log in with valid credentials
-    loginPage.Login With Credentials                    ${validCreds.email}    ${validCreds.password}
+    loginPage.Login With Credentials                    ${LOGIN_VALID_CREDENTIALS.email}    ${LOGIN_VALID_CREDENTIALS.password}
     loginPage.Succesful Notice Should Be Appear
