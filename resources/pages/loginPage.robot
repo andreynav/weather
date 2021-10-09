@@ -17,12 +17,6 @@ ${LOGIN_URL}                                            https://home.openweather
 &{LOGIN_VALID_CREDENTIALS}                              email=nav.testsw@gmail.com                      password=Qwerty123$
 
 *** Keywords ***
-Login With Invalid Credentials
-    [Documentation]                                     User log in with invalid credentials
-    [Arguments]                                         ${email}                                        ${password}
-    loginPage.Login With Credentials                    ${email}                                        ${password}
-    loginPage.Alert Should Be Appear
-
 Login With Credentials
     [Documentation]                                     User log in with credentials
     [Arguments]                                         ${email}                                        ${password}
