@@ -28,10 +28,6 @@ Get Current Time
         BuiltIn.Set Test Variable               ${HW_TIMESTAMP2}
     END
 
-Waiting for seconds
-    [Arguments]                                 ${sec}
-    BuiltIn.Sleep                               ${sec}
-
 Difference Should Be Equal
     [Arguments]                                 ${val}
     ${val}      BuiltIn.Convert To Number       ${val}

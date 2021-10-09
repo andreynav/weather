@@ -8,7 +8,7 @@ Sum of two variables
 
 Get difference between two timestamps
     hwOneKeywords.Get Current Time
-    hwOneKeywords.Waiting for seconds           2
+    BuiltIn.Sleep    2
     hwOneKeywords.Get Current Time
     hwOneKeywords.Difference Should Be Equal    2
 
