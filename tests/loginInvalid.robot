@@ -1,7 +1,7 @@
 *** Settings ***
 Resource                    ../import.robot
-Test Setup                  main.Begin Test
-Test Teardown               main.End Test
+Test Setup                  common.Begin Test
+Test Teardown               common.End Test
 Test Template               loginPage.Login With Invalid Credentials
 
 *** Test Cases ***          email                               password
