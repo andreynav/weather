@@ -14,18 +14,16 @@ ${LOGIN_MODAL_TITLE_VALUE}                              Sign In To Your Account
 ${LOGIN_PASSWORD_FIELD_LOCATOR}                         //div[@class='input-group']/input[@id='user_password']
 ${LOGIN_SUBMIT_BUTTON_LOCATOR}                          //input[@value='Submit']
 ${LOGIN_URL}                                            https://home.openweathermap.org/users/sign_in
-&{LOGIN_VALID_CREDENTIALS}                              email=nav.testsw@gmail.com                      password=Qwerty123$
 
 *** Keywords ***
 Login With Credentials
     [Documentation]                                     User log in with credentials
     [Arguments]                                         ${email}                                        ${password}
-    loginPage.Go to Sign In Page
     loginPage.Input Email                               ${email}
     loginPage.Input Password                            ${password}
     loginPage.Submit Credentials
 
-Go to Sign In Page
+Open Sign In Page
     [Documentation]                                     User opens the Sign in page
     SeleniumLibrary.Go To                               ${LOGIN_URL}
     SeleniumLibrary.Wait Until Element Contains         locator=${LOGIN_MODAL_TITLE_LOCATOR}            text=${LOGIN_MODAL_TITLE_VALUE}
@@ -46,12 +44,16 @@ Submit Credentials
     [Documentation]                                     User clicks the button Submit
     SeleniumLibrary.Click Element                       locator=${LOGIN_SUBMIT_BUTTON_LOCATOR}
 
-Alert Should Be Appear
+Verify Alert Is Appeared
     [Documentation]                                     The warning alert that email or password is invalid is displayed
     SeleniumLibrary.Wait Until Element Is Visible       locator=${LOGIN_ALERT_FAIL_TITLE_LOCATOR}
     SeleniumLibrary.Wait Until Element Contains         locator=${LOGIN_ALERT_FAIL_TEXT_VALUE_LOCATOR}  text=${LOGIN_ALERT_FAIL_TEXT_VALUE}
 
-Succesful Notice Should Be Appear
+Verify Successful Notice Is Appeared
     [Documentation]                                     The notification that user signed in successfully is displayed
     SeleniumLibrary.Wait Until Element Is Visible       locator=${LOGIN_ALERT_SUCCESS_TITLE_LOCATOR}
     SeleniumLibrary.Wait Until Element Contains         locator=${LOGIN_ALERT_SUCCESS_TEXT_LOCATOR}     text=${LOGIN_ALERT_SUCCESS_TEXT_VALUE}
+
+Verify Sign In Page Is Opened
+    [Documentation]                                     The sign in page is opened
+    SeleniumLibrary.Wait Until Location Is              ${LOGIN_URL}

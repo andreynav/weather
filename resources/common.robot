@@ -2,14 +2,18 @@
 Library                                             SeleniumLibrary
 
 *** Variables ***
-${MAIN_URL}                                         https://openweathermap.org/
+${BASE_URL}                                         openweathermap.org
 
 *** Keywords ***
-Begin Test
+Open Browser And Maximaze
     [Documentation]                                 Sets browser and settings for window
     SeleniumLibrary.Open Browser                    browser=Chrome
     SeleniumLibrary.Maximize Browser Window
 
-End Test
-    [Documentation]                                 End test by closing the browser
+Close Browser
+    [Documentation]                                 Close Browser by closing the browser
     SeleniumLibrary.Close Browser
+
+Delete Session
+    [Documentation]                                 Delete current session by removing all cookies
+    SeleniumLibrary.Delete All Cookies

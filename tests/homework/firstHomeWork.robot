@@ -1,5 +1,5 @@
 *** Settings ***
-Resource                                        ../import.robot
+Resource                                        ../../import.robot
 
 *** Test Cases ***
 Sum of two variables
