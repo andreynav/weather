@@ -18,11 +18,11 @@ Open User Settings Page
     SeleniumLibrary.Wait Until Element Contains         locator=${PROFILE_USER_SETTINGS_ITEM_MENU_LOCATOR}     text=${PROFILE_USER_SETTINGS_ITEM_MENU_VALUE}
 
 Verify User Settings Page Is Opened
-    [Documentation]                                     The user settings page is opened
+    [Documentation]                                     The User Settings page is opened
     SeleniumLibrary.Wait Until Location Is              ${PROFILE_URL}
 
 Input Username
-    [Documentation]                                     User input a name  #сделать проверку на существующее имя
+    [Documentation]                                     User inputs a name
     [Arguments]                                         ${name}
     SeleniumLibrary.Wait Until Element Is Visible       locator=${PROFILE_USERNAME_FIELD_LOCATOR}
     SeleniumLibrary.Input Text                          locator=${PROFILE_USERNAME_FIELD_LOCATOR}            text=${name}     clear=true

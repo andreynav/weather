@@ -20,15 +20,15 @@ Login With Valid And Invalid Credentials
     [Documentation]                                     User log in with valid and invalid credentials
     [Setup]                                             loginPage.Open Sign In Page
     [Teardown]                                          Run Keywords    Delete Session
-    BuiltIn.Log Many                                    Step 1: Ввести правильный логин и неправильный пароль ->
-    ...                                                 1) отображается  страница логина
-    ...                                                 2) отображается ошибка о неправильных данных
+    BuiltIn.Log Many                                    Step 1: Ввести правильный логин и неправильный пароль
+    ...                                                 ER 1: отображается  страница логина
+    ...                                                 ER 2: отображается ошибка о неправильных данных
     loginPage.Login With Credentials                    ${USER_CREDENTIALS.email}       invalid
     loginPage.Verify Sign In Page Is Opened
     loginPage.Verify Alert Is Appeared
-    BuiltIn.Log Many                                    Step 2: ввести правильный пароль ->
-    ...                                                 1) отображается главная страница  приложения
-    ...                                                 2) пользователь авторизован в системе
+    BuiltIn.Log Many                                    Step 2: ввести правильный пароль
+    ...                                                 ER 1: отображается главная страница  приложения
+    ...                                                 ER 2: пользователь авторизован в системе
     loginPage.Login With Credentials                    ${USER_CREDENTIALS.email}       ${USER_CREDENTIALS.password}
     mainPage.Verify Main Page Is Opened
     loginPage.Verify Successful Notice Is Appeared

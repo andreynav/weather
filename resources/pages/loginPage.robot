@@ -24,18 +24,18 @@ Login With Credentials
     loginPage.Submit Credentials
 
 Open Sign In Page
-    [Documentation]                                     User opens the Sign in page
+    [Documentation]                                     User opens the Sign In page
     SeleniumLibrary.Go To                               ${LOGIN_URL}
     SeleniumLibrary.Wait Until Element Contains         locator=${LOGIN_MODAL_TITLE_LOCATOR}            text=${LOGIN_MODAL_TITLE_VALUE}
 
 Input Email
-    [Documentation]                                     User input the email
+    [Documentation]                                     User inputs the email
     [Arguments]                                         ${email}
     SeleniumLibrary.Wait Until Element Is Visible       locator=${LOGIN_EMAIL_FIELD_LOCATOR}
     SeleniumLibrary.Input Text                          locator=${LOGIN_EMAIL_FIELD_LOCATOR}            text=${email}
 
 Input Password
-    [Documentation]                                     User input the password
+    [Documentation]                                     User inputs the password
     [Arguments]                                         ${password}
     SeleniumLibrary.Wait Until Element Is Visible       locator=${LOGIN_PASSWORD_FIELD_LOCATOR}
     SeleniumLibrary.Input Text                          locator=${LOGIN_PASSWORD_FIELD_LOCATOR}         text=${password}
@@ -55,5 +55,5 @@ Verify Successful Notice Is Appeared
     SeleniumLibrary.Wait Until Element Contains         locator=${LOGIN_ALERT_SUCCESS_TEXT_LOCATOR}     text=${LOGIN_ALERT_SUCCESS_TEXT_VALUE}
 
 Verify Sign In Page Is Opened
-    [Documentation]                                     The sign in page is opened
+    [Documentation]                                     The Sign In page is opened
     SeleniumLibrary.Wait Until Location Is              ${LOGIN_URL}

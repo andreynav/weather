@@ -4,7 +4,6 @@ Library                                                 SeleniumLibrary
 *** Variables ***
 ${NAVBAR_SIGNIN_ITEM_LOCATOR}                           //li[contains(@class,"user-li")]/a
 ${NAVBAR_SIGNED_USER_ITEM_LOCATOR}                      //div[@class='inner-user-container']
-${NAVBAR_SIGNED_USER_ITEM_VALUE}                        andrei      #не забыть вынести в отдельный файл с кредами
 
 *** Keywords ***
 Verify User Signed In And His Name
