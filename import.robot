@@ -7,3 +7,4 @@ Resource        resources/common.robot
 Resource        resources/hwOneKeywords.robot
 Library         resources/currentTime.py
 Library         Collections
+Variables       data/user.py

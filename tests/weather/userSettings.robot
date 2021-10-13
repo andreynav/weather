@@ -3,11 +3,6 @@ Resource                                                ../../import.robot
 Suite Setup                                             common.Open Browser And Maximaze
 Suite Teardown                                          common.Close Browser
 
-*** Variables ***
-&{USER_CREDENTIALS}                                     email=nav.testsw@gmail.com          password=Qwerty123$
-${USER_CURRENT_NAME}                                    andrei
-${USER_NEXT_NAME}                                       andrei1
-
 *** Test Cases ***
 Change User Name
     [Documentation]                                     User changes his name in user settings
