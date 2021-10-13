@@ -7,9 +7,6 @@ ${PROFILE_USER_SETTINGS_ITEM_MENU_VALUE}                User settings
 ${PROFILE_USERNAME_FIELD_LOCATOR}                       //input[@id='profile_form_username']
 ${PROFILE_URL}                                          https://home.openweathermap.org/home
 ${PROFILE_BUTTON_LOCATOR}                               //input[@value='Save']
-${PROFILE_ALERT_SUCCESS_TITLE_LOCATOR}                  //div[@class='panel-heading']
-${PROFILE_ALERT_SUCCESS_TEXT_LOCATOR}                   //div[@class='panel-heading']/following-sibling::div
-${PROFILE_ALERT_SUCCESS_TEXT_VALUE}                     Profile was updated successfully
 
 *** Keywords ***
 Open User Settings Page
@@ -30,8 +27,3 @@ Input Username
 Click Save Button
     [Documentation]                                     User clicks the button Submit
     SeleniumLibrary.Click Element                       locator=${PROFILE_BUTTON_LOCATOR}
-
-Verify Successful Notice Is Appeared
-    [Documentation]                                     The notification that the user changed his name successfully is displayed
-    SeleniumLibrary.Wait Until Element Is Visible       locator=${PROFILE_ALERT_SUCCESS_TITLE_LOCATOR}
-    SeleniumLibrary.Wait Until Element Contains         locator=${PROFILE_ALERT_SUCCESS_TEXT_LOCATOR}     text=${PROFILE_ALERT_SUCCESS_TEXT_VALUE}

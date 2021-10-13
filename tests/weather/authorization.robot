@@ -25,13 +25,13 @@ Login With Valid And Invalid Credentials
     ...                                                 ER 2: отображается ошибка о неправильных данных
     loginPage.Login With Credentials                    ${USER_CREDENTIALS.email}       invalid
     loginPage.Verify Sign In Page Is Opened
-    loginPage.Verify Alert Is Appeared
+    common.Verify Alert Is Displayed                    ${ALERT_INVALID_CREDS_VALUE}
     BuiltIn.Log Many                                    Step 2: ввести правильный пароль
     ...                                                 ER 1: отображается главная страница  приложения
     ...                                                 ER 2: пользователь авторизован в системе
     loginPage.Login With Credentials                    ${USER_CREDENTIALS.email}       ${USER_CREDENTIALS.password}
     mainPage.Verify Main Page Is Opened
-    loginPage.Verify Successful Notice Is Appeared
+    common.Verify Alert Is Displayed                    ${ALERT_SIGNEDIN_VALUE}
     navbar.Verify User Signed In And His Name           ${USER_CURRENT_NAME}
 
 *** Keywords ***
@@ -39,8 +39,7 @@ Login With Invalid Credentials
     [Documentation]                                     User log in with invalid credentials
     [Arguments]                                         ${email}                        ${password}
     loginPage.Login With Credentials                    ${email}                        ${password}
-    loginPage.Verify Alert Is Appeared
-
+    common.Verify Alert Is Displayed                    ${ALERT_INVALID_CREDS_VALUE}
 
 
 

@@ -14,7 +14,7 @@ Change User Name
     ...                                                 ER 1: проверить сообщение о успешной смене имени
     profilePage.Input Username                          ${USER_NEXT_NAME}
     profilePage.Click Save Button
-    profilePage.Verify Successful Notice Is Appeared
+    common.Verify Alert Is Displayed                    ${ALERT_PROFILE_UPDATED_VALUE}
     BuiltIn.Log Many                                    Step 1: перейти на главную страницу
     ...                                                 ER 1: новое имя пользователя отображается в навигационном меню
     mainPage.Open Main Page
