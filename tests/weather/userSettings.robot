@@ -9,7 +9,6 @@ Change User Name
     [Setup]                                             Run Keywords  loginPage.Open Sign In Page
     ...                AND                              loginPage.Login With Credentials    ${USER_CREDENTIALS.email}    ${USER_CREDENTIALS.password}
     ...                AND                              PROFILEPage.Open User Settings Page
-    [Teardown]                                          Run Keywords    Delete Session
     BuiltIn.Log Many                                    Step 1: Ввести имя пользователя в поле name
     ...                                                 ER 1: проверить сообщение о успешной смене имени
     profilePage.Input Username                          ${USER_NEXT_NAME}
@@ -19,3 +18,4 @@ Change User Name
     ...                                                 ER 1: новое имя пользователя отображается в навигационном меню
     mainPage.Open Main Page
     navbar.Verify User Signed In And His Name           ${USER_NEXT_NAME}
+    [Teardown]                                          Run Keywords    Delete Session

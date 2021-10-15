@@ -7,7 +7,6 @@ Suite Teardown                                          common.Close Browser
 Login With Invalid Credentials Should Fail
     [Documentation]                                     User log in with different cambinations of invalid credentials
     [Setup]                                             loginPage.Open Sign In Page
-    [Teardown]                                          Run Keywords    Delete Session
     [Template]                                          Login With Invalid Credentials
     invalid                                             ${USER_CREDENTIALS.password}
     ${USER_CREDENTIALS.email}                           invalid
@@ -15,11 +14,11 @@ Login With Invalid Credentials Should Fail
     ${EMPTY}                                            ${USER_CREDENTIALS.password}
     ${USER_CREDENTIALS.email}                           ${EMPTY}
     ${EMPTY}                                            ${EMPTY}
+    [Teardown]                                          Run Keywords    Delete Session
 
 Login With Valid And Invalid Credentials
     [Documentation]                                     User log in with valid and invalid credentials
     [Setup]                                             loginPage.Open Sign In Page
-    [Teardown]                                          Run Keywords    Delete Session
     BuiltIn.Log Many                                    Step 1: Ввести правильный логин и неправильный пароль
     ...                                                 ER 1: отображается  страница логина
     ...                                                 ER 2: отображается ошибка о неправильных данных
@@ -33,6 +32,7 @@ Login With Valid And Invalid Credentials
     mainPage.Verify Main Page Is Opened
     common.Verify Alert Is Displayed                    ${ALERT_SIGNEDIN_VALUE}
     navbar.Verify User Signed In And His Name           ${USER_CURRENT_NAME}
+    [Teardown]                                          Run Keywords    Delete Session
 
 *** Keywords ***
 Login With Invalid Credentials
