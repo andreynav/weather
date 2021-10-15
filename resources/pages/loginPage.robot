@@ -20,7 +20,7 @@ Login With Credentials
 Open Sign In Page
     [Documentation]                                     User opens the Sign In page
     SeleniumLibrary.Go To                               ${LOGIN_URL}
-    SeleniumLibrary.Wait Until Element Contains         locator=${LOGIN_MODAL_TITLE_LOCATOR}            text=${LOGIN_MODAL_TITLE_VALUE}
+    loginPage.Verify Sign In Page Is Opened
 
 Input Email
     [Documentation]                                     User inputs the email

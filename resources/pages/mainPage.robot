@@ -10,7 +10,7 @@ ${MAIN_ARTICLE1_TITLE_VALUE}                            Historical weather for a
 Open Main Page
     [Documentation]                                     User opens the Main page
     SeleniumLibrary.Go To                               ${MAIN_URL}
-    SeleniumLibrary.Wait Until Element Contains         locator=${MAIN_ARTICLE1_TITLE_LOCATOR}     text=${MAIN_ARTICLE1_TITLE_VALUE}
+    mainPage.Verify Main Page Is Opened
 
 Verify Main Page Is Opened
     [Documentation]                                     The Main page is opened

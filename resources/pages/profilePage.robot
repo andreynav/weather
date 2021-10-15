@@ -12,7 +12,7 @@ ${PROFILE_BUTTON_LOCATOR}                               //input[@value='Save']
 Open User Settings Page
     [Documentation]                                     User opens the User Settings page
     SeleniumLibrary.Go To                               ${PROFILE_URL}
-    SeleniumLibrary.Wait Until Element Contains         locator=${PROFILE_USER_SETTINGS_ITEM_MENU_LOCATOR}     text=${PROFILE_USER_SETTINGS_ITEM_MENU_VALUE}
+    profilePage.Verify User Settings Page Is Opened
 
 Verify User Settings Page Is Opened
     [Documentation]                                     The User Settings page is opened
