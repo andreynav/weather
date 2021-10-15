@@ -26,4 +26,5 @@ Input Username
 
 Click Save Button
     [Documentation]                                     User clicks the button Submit
+    SeleniumLibrary.Wait Until Element Is Visible       locator=${PROFILE_BUTTON_LOCATOR}
     SeleniumLibrary.Click Element                       locator=${PROFILE_BUTTON_LOCATOR}

@@ -36,6 +36,7 @@ Input Password
 
 Submit Credentials
     [Documentation]                                     User clicks the button Submit
+    SeleniumLibrary.Wait Until Element Is Visible       locator=${LOGIN_SUBMIT_BUTTON_LOCATOR}
     SeleniumLibrary.Click Element                       locator=${LOGIN_SUBMIT_BUTTON_LOCATOR}
 
 Verify Sign In Page Is Opened
