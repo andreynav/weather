@@ -40,6 +40,8 @@ Login With Invalid Credentials
     [Arguments]                                         ${email}                        ${password}
     loginPage.Login With Credentials                    ${email}                        ${password}
     common.Verify Alert Is Displayed                    ${ALERT_INVALID_CREDS_VALUE}
+    loginPage.Verify Sign In Page Is Opened
+
 
 
 
