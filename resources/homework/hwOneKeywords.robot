@@ -1,5 +1,5 @@
 *** Settings ***
-Resource                                        ../import.robot
+Resource                                        ../../import.robot
 
 *** Variables ***
 @{HW_TIMESTAMP}
