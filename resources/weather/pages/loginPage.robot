@@ -10,17 +10,13 @@ ${LOGIN_SUBMIT_BUTTON_LOCATOR}                          //input[@value='Submit']
 ${LOGIN_URL}                                            https://home.openweathermap.org/users/sign_in
 
 *** Keywords ***
-Login With Credentials
-    [Documentation]                                     User log in with credentials
-    [Arguments]                                         ${email}                                        ${password}
-    loginPage.Input Email                               ${email}
-    loginPage.Input Password                            ${password}
-    loginPage.Submit Credentials
-
 Open Sign In Page
     [Documentation]                                     User opens the Sign In page
     SeleniumLibrary.Go To                               ${LOGIN_URL}
-    loginPage.Verify Sign In Page Is Opened
+
+Verify Sign In Page Url
+    [Documentation]                                     The Sign In page url is
+    SeleniumLibrary.Wait Until Location Is              ${LOGIN_URL}
 
 Input Email
     [Documentation]                                     User inputs the email
@@ -39,6 +35,3 @@ Submit Credentials
     SeleniumLibrary.Wait Until Element Is Visible       locator=${LOGIN_SUBMIT_BUTTON_LOCATOR}
     SeleniumLibrary.Click Element                       locator=${LOGIN_SUBMIT_BUTTON_LOCATOR}
 
-Verify Sign In Page Is Opened
-    [Documentation]                                     The Sign In page is opened
-    SeleniumLibrary.Wait Until Location Is              ${LOGIN_URL}

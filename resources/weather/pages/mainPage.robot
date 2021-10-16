@@ -10,8 +10,8 @@ ${MAIN_ARTICLE1_TITLE_VALUE}                            Historical weather for a
 Open Main Page
     [Documentation]                                     User opens the Main page
     SeleniumLibrary.Go To                               ${MAIN_URL}
-    mainPage.Verify Main Page Is Opened
+    mainPage.Verify Main Page Url
 
-Verify Main Page Is Opened
-    [Documentation]                                     The Main page is opened
+Verify Main Page Url
+    [Documentation]                                     The Main page url is
     SeleniumLibrary.Wait Until Location Is              ${MAIN_URL}

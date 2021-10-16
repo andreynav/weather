@@ -12,10 +12,10 @@ ${PROFILE_BUTTON_LOCATOR}                               //input[@value='Save']
 Open User Settings Page
     [Documentation]                                     User opens the User Settings page
     SeleniumLibrary.Go To                               ${PROFILE_URL}
-    profilePage.Verify User Settings Page Is Opened
+    #profilePage.Verify User Settings Page Is Opened
 
-Verify User Settings Page Is Opened
-    [Documentation]                                     The User Settings page is opened
+Verify User Settings Page Url
+    [Documentation]                                     The User Settings page url is
     SeleniumLibrary.Wait Until Location Is              ${PROFILE_URL}
 
 Input Username
