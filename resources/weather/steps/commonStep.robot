@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../../import.robot
+Resource    ../../import.resource
 
 *** Keywords ***
 Open Browser And Maximaze

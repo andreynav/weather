@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../../import.robot
+Resource    ../../import.resource
 
 *** Keywords ***
 Open Main Page
@@ -10,4 +10,3 @@ Open Main Page
 Verify Main Page Is Opened
     [Documentation]    Verify the Main page is opened
     mainPage.Verify Main Page Url
-

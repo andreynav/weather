@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../../import.robot
+Resource    ../../import.resource
 
 *** Keywords ***
 Open User Settings Page
@@ -14,5 +14,6 @@ Verify User Settings Page Is Opened
 Change User Name
     [Documentation]    User inputs a name and click Save button
     [Arguments]    ${name}
-    profilePage.Input Username     ${name}
+    profilePage.Input Username    ${name}
     profilePage.Click Save Button
+

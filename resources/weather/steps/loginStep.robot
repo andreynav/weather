@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../../import.robot
+Resource    ../../import.resource
 
 *** Keywords ***
 Login With Credentials
@@ -18,5 +18,3 @@ Open Sign In Page
 Verify Sign In Page Is Opened
     [Documentation]     Verify the Sign In page is opend
 	loginPage.Verify Sign In Page Url
-
-
