@@ -6,7 +6,7 @@ Suite Teardown    commonStep.Close Browser
 *** Test Cases ***
 Change User Name
     [Documentation]    User changes his name in user settings
-    [Setup]    Run Keywords    loginStep.Open Sign In Page
+    [Setup]    Run Keywords    loginStep.Go To Sign In Page
     ...        AND             loginStep.Login With Credentials    ${USER_CREDENTIALS.email}
     ...                                                            ${USER_CREDENTIALS.password}
     ...        AND             profileStep.Open User Settings Page

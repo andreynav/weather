@@ -6,7 +6,7 @@ Suite Teardown    commonStep.Close Browser
 *** Test Cases ***
 Login With Invalid Credentials Should Fail
     [Documentation]    User log in with different cambinations of invalid credentials
-    [Setup]    loginStep.Open Sign In Page
+    [Setup]    loginStep.Go To Sign In Page
 
     [Template]    Login With Invalid Credentials
     invalid    ${USER_CREDENTIALS.password}
@@ -20,7 +20,7 @@ Login With Invalid Credentials Should Fail
 
 Login With Valid And Invalid Credentials
     [Documentation]    User log in with valid and invalid credentials
-    [Setup]    loginStep.Open Sign In Page
+    [Setup]    loginStep.Go To Sign In Page
 
     BuiltIn.Log Many    Step 1: Ввести правильный логин и неправильный пароль
     ...                 ER 1: отображается  страница логина

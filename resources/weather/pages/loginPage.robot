@@ -10,7 +10,7 @@ ${LOGIN_SUBMIT_BUTTON_LOCATOR}     //input[@value='Submit']
 ${LOGIN_URL}                       https://home.openweathermap.org/users/sign_in
 
 *** Keywords ***
-Open Sign In Page
+Go To Sign In Page
     [Documentation]    User opens the Sign In page
     SeleniumLibrary.Go To   ${LOGIN_URL}
 

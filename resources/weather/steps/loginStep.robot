@@ -10,9 +10,9 @@ Login With Credentials
 	loginPage.Input Password    ${password}
 	loginPage.Submit Credentials
 
-Open Sign In Page
+Go To Sign In Page
 	[Documentation]    User opens the Sign In page
-	loginPage.Open Sign In Page
+	loginPage.Go To Sign In Page
 	loginPage.Verify Sign In Page Url
 
 Verify Sign In Page Is Opened
