@@ -7,10 +7,9 @@ ${MAIN_ARTICLE1_TITLE_LOCATOR}    //h2[contains(text(),'Historical weather for a
 ${MAIN_ARTICLE1_TITLE_VALUE}      Historical weather for any location
 
 *** Keywords ***
-Open Main Page
+Go To Main Page
     [Documentation]    User opens the Main page
     SeleniumLibrary.Go To    ${MAIN_URL}
-    mainPage.Verify Main Page Url
 
 Verify Main Page Url
     [Documentation]    The Main page url is

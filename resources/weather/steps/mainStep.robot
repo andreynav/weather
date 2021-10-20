@@ -2,9 +2,9 @@
 Resource    ../../import.resource
 
 *** Keywords ***
-Open Main Page
+Go To Main Page
     [Documentation]    User opens the Main page
-    mainPage.Open Main Page
+    mainPage.Go To Main Page
     mainPage.Verify Main Page Url
 
 Verify Main Page Is Opened
