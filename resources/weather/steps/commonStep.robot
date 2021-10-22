@@ -4,20 +4,23 @@ Resource    ../../import.resource
 *** Keywords ***
 Open Browser And Maximaze
     [Documentation]    Sets browser and settings for window
-    common.Open Browser And Maximaze
+    SeleniumLibrary.Open Browser    browser=Chrome
+    SeleniumLibrary.Maximize Browser Window
 
 Close Browser
-    [Documentation]    Close Browser by closing the browser
-    common.Close Browser
+    [Documentation]    Closing the current browser
+    SeleniumLibrary.Close Browser
 
 Delete Session
     [Documentation]    Delete current session by removing all cookies
-    common.Delete Session
+    SeleniumLibrary.Delete All Cookies
 
 Verify Alert Is Displayed
-    [Documentation]    Verify the alert with ${text} is displayed
+    [Documentation]    The alert with ${text} is displayed
     [Arguments]    ${text}
-    common.Verify Alert Is Displayed    ${text}
+    SeleniumLibrary.Wait Until Element Is Visible    locator=${ALERT_TITLE_LOCATOR}
+    SeleniumLibrary.Wait Until Element Contains    locator=${ALERT_TEXT_LOCATOR}
+    ...                                            text=${text}
 
 Verify Unique Page Element
     [Documentation]    Verify the unique page element value
