@@ -21,4 +21,5 @@ Change User Name
     mainStep.Go To Main Page
     navbarStep.Verify User Name    ${USER_NEXT_NAME}
 
-    [Teardown]    commonStep.Delete Session
+    [Teardown]    Run Keywords    profileStep.Open User Settings Page
+    ...           AND             profileStep.Change User Name    ${USER_CURRENT_NAME}
