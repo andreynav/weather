@@ -16,7 +16,7 @@ Login With Invalid Credentials Should Fail
     ${USER_CREDENTIALS.email}   ${EMPTY}
     ${EMPTY}    ${EMPTY}
 
-    [Teardown]    Run Keywords    commonStep.Delete Session
+    [Teardown]    commonStep.Delete Session
 
 Login With Valid And Invalid Credentials
     [Documentation]    User log in with valid and invalid credentials
@@ -39,7 +39,7 @@ Login With Valid And Invalid Credentials
     commonStep.Verify Alert Is Displayed    ${ALERT_SIGNEDIN_VALUE}
     navbarStep.Verify User Name    ${USER_CURRENT_NAME}
 
-    [Teardown]    Run Keywords    commonStep.Delete Session
+    [Teardown]    commonStep.Delete Session
 
 *** Keywords ***
 Login With Invalid Credentials

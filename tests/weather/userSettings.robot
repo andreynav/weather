@@ -21,4 +21,4 @@ Change User Name
     mainStep.Go To Main Page
     navbarStep.Verify User Name    ${USER_NEXT_NAME}
 
-    [Teardown]    Run Keywords    commonStep.Delete Session
+    [Teardown]    commonStep.Delete Session
