@@ -26,3 +26,10 @@ Verify Alert Is Displayed
     SeleniumLibrary.Wait Until Element Is Visible    locator=${ALERT_TITLE_LOCATOR}
     SeleniumLibrary.Wait Until Element Contains    locator=${ALERT_TEXT_LOCATOR}
     ...                                            text=${text}
+
+Get Unique Page Element
+    [Documentation]    Get unique page element
+    [Arguments]    ${locator}
+    SeleniumLibrary.Wait Until Element Is Visible    locator=${locator}
+    ${value}    SeleniumLibrary.Get Text    locator=${locator}
+    [Return]    ${value}

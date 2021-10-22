@@ -13,8 +13,9 @@ Login With Credentials
 Go To Sign In Page
 	[Documentation]    User opens the Sign In page
 	loginPage.Go To Sign In Page
-	loginPage.Verify Sign In Page Url
+	loginStep.Verify Sign In Page Is Opened
 
 Verify Sign In Page Is Opened
-    [Documentation]     Verify the Sign In page is opend
-	loginPage.Verify Sign In Page Url
+    [Documentation]     Verify the Sign In page is opened by way checking unique element
+    commonStep.Verify Unique Page Element    locator=${LOGIN_MODAL_TITLE_LOCATOR}
+    ...                                      value=${LOGIN_MODAL_TITLE_VALUE}

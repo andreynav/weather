@@ -13,10 +13,6 @@ Open User Settings Page
     [Documentation]    User opens the User Settings page
     SeleniumLibrary.Go To   ${PROFILE_URL}
 
-Verify User Settings Page Url
-    [Documentation]    The User Settings page url is
-    SeleniumLibrary.Wait Until Location Is    ${PROFILE_URL}
-
 Input Username
     [Documentation]    User inputs a name
     [Arguments]    ${name}

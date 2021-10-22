@@ -14,10 +14,6 @@ Go To Sign In Page
     [Documentation]    User opens the Sign In page
     SeleniumLibrary.Go To   ${LOGIN_URL}
 
-Verify Sign In Page Url
-    [Documentation]    The Sign In page url is
-    SeleniumLibrary.Wait Until Location Is    ${LOGIN_URL}
-
 Input Email
     [Documentation]    User inputs the email
     [Arguments]    ${email}

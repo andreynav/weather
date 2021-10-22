@@ -18,3 +18,12 @@ Verify Alert Is Displayed
     [Documentation]    Verify the alert with ${text} is displayed
     [Arguments]    ${text}
     common.Verify Alert Is Displayed    ${text}
+
+Verify Unique Page Element
+    [Documentation]    Verify the unique page element value
+    [Arguments]    ${locator}
+    ...            ${value}
+    ${currentValue}    common.Get Unique Page Element    ${locator}
+    BuiltIn.Should Be Equal    ${currentValue}
+    ...                        ${value}
+    ...                        The value does not equal required

@@ -5,11 +5,12 @@ Resource    ../../import.resource
 Open User Settings Page
     [Documentation]    User opens the User Settings page
     profilePage.Open User Settings Page
-    profilePage.Verify User Settings Page Url
+    profileStep.Verify User Settings Page Is Opened
 
 Verify User Settings Page Is Opened
-    [Documentation]    The User Settings page is opened
-    profilePage.Verify User Settings Page Url
+    [Documentation]    Verify the user settings page is opened by way checking unique element
+    commonStep.Verify Unique Page Element    locator=${PROFILE_USER_SETTINGS_ITEM_MENU_LOCATOR}
+    ...                                      value=${PROFILE_USER_SETTINGS_ITEM_MENU_VALUE}
 
 Change User Name
     [Documentation]    User inputs a name and click Save button

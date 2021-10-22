@@ -10,7 +10,3 @@ ${MAIN_ARTICLE1_TITLE_VALUE}      Historical weather for any location
 Go To Main Page
     [Documentation]    User opens the Main page
     SeleniumLibrary.Go To    ${MAIN_URL}
-
-Verify Main Page Url
-    [Documentation]    The Main page url is
-    SeleniumLibrary.Wait Until Location Is    ${MAIN_URL}
