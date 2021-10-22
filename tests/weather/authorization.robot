@@ -37,7 +37,7 @@ Login With Valid And Invalid Credentials
     ...                                 ${USER_CREDENTIALS.password}
     mainStep.Verify Main Page Is Opened
     commonStep.Verify Alert Is Displayed    ${ALERT_SIGNEDIN_VALUE}
-    navbarStep.Verify User Signed In And His Name   ${USER_CURRENT_NAME}
+    navbarStep.Verify User Name    ${USER_CURRENT_NAME}
 
     [Teardown]    Run Keywords    commonStep.Delete Session
 

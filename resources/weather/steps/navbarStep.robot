@@ -2,7 +2,11 @@
 Resource    ../../import.resource
 
 *** Keywords ***
-Verify User Signed In And His Name
-    [Documentation]    User signed in and his name is displayed in navbar
+Verify User Name
+    [Documentation]    Verify the user ${name} is displayed in navbar
     [Arguments]    ${name}
-    navbar.Verify User Signed In And His Name    ${name}
+    ${userName}    navbar.Get User Name
+    BuiltIn.Should Be Equal    ${userName}
+    ...                        ${name}
+    ...                        The name does not equal exisitng
+
