@@ -1,4 +1,4 @@
 *** Settings ***
-Resource        data/import.resource
-Resource        resources/import.resource
+Resource        framework/data/import.resource
+Resource        framework/resources/import.resource
 Library         Collections
