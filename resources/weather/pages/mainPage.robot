@@ -1,0 +1,12 @@
+*** Settings ***
+Library    SeleniumLibrary
+
+*** Variables ***
+${MAIN_URL}                       https://home.openweathermap.org/
+${MAIN_ARTICLE1_TITLE_LOCATOR}    //h2[contains(text(),'Historical weather for any location')]
+${MAIN_ARTICLE1_TITLE_VALUE}      Historical weather for any location
+
+*** Keywords ***
+Go To Main Page
+    [Documentation]    User opens the Main page
+    SeleniumLibrary.Go To    ${MAIN_URL}
