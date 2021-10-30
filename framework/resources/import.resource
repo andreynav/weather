@@ -10,3 +10,4 @@ Resource        weather/steps/mainStep.robot
 Resource        weather/steps/navbarStep.robot
 Resource        weather/steps/profileStep.robot
 Resource        weather/common.robot
+Resource        weather/api/api.robot
