@@ -1,18 +1,22 @@
 import random
 
-def getRandomItemExceptCurrentFromList(current, list):
-    newList = removeItemfromList(current, list)
-    randomItem = getRandomFromList(list)
+
+def getRandomItemExceptCurrentFromList(current, listItems):
+    removeItemFromList(current, listItems)
+    randomItem = getRandomFromList(listItems)
     return randomItem
 
-def getRandomFromList(list):
-    return random.choice(list)
 
-def removeItemfromList(current, list):
-    if current in list:
-        return list.remove(current)
+def getRandomFromList(listItems):
+    return random.choice(listItems)
+
+
+def removeItemFromList(current, listItems):
+    if current in listItems:
+        return listItems.remove(current)
     else:
-        return list;
+        return listItems
+
 
 def defaultParam(param):
     if 'units' not in param:
