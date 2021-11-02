@@ -5,7 +5,6 @@ Resource          ../../import.resource
 Get Weather Via Api By Name And Cord And Id
     [Documentation]    Get weather via certain parameters: name, coordinates, id
     [Template]    Get Weather By Parameters And Verify Results
-    #path               expResult                params
     ${JSON_PATH.lon}    ${COORD_BELMOPAN.lon}    ${{ dict(q="${BELMOPAN}", appid="${APP_ID}") }}
     ${JSON_PATH.lat}    ${COORD_BELMOPAN.lat}    ${{ dict(q="${BELMOPAN}", appid="${APP_ID}") }}
     ${JSON_PATH.name}   ${BELMOPAN}              ${{ dict(lat="${COORD_BELMOPAN.lat}", lon="${COORD_BELMOPAN.lon}", appid="${APP_ID}") }}
@@ -26,6 +25,8 @@ Get Weather By Parameters And Verify Results
     [Arguments]    ${jsonPath}
     ...            ${expectedResult}
     ...            ${params}
+    BuiltIn.Log Many    Step 1: получить данные о погоде с использованием параметров
+    ...                 ER 1: результаты выводится для ${expectedResult}
     ${value}    api.Get Value For Specific JPath    ${jsonPath}
     ...                                             ${params}
     BuiltIn.Should Be Equal As Strings   ${value}
