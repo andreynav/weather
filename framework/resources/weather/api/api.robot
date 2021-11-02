@@ -34,7 +34,7 @@ Converting Measure Temp1 To Measure Temp2
     [Return]    ${convertedValue}
 
 Get Random Measure Except
-    [Documentation]
+    [Documentation]    Get random temperature measure except getting as parameter
     [Arguments]    ${existingMeasure}
     ${unitKeys}    Collections.Get Dictionary Keys    ${UNITS}
     ${randomMeausure}    randomList.Get Random Item Except Current From List    ${existingMeasure}
@@ -42,7 +42,7 @@ Get Random Measure Except
     [Return]    ${randomMeausure}
 
 Get Value For Specific JPath
-    [Documentation]    Get weather for a city via certain parameters
+    [Documentation]    Get value of specific parameter for a city
     [Arguments]    ${jsonPath}
     ...            ${params}
     ${response}    RequestsLibrary.GET    ${API_URL}
@@ -53,7 +53,7 @@ Get Value For Specific JPath
     [Return]    ${temperature[0]}
 
 Create Valid Dictionary Of Params
-    [Documentation]
+    [Documentation]   Get query params, verify them and create dictionary with valid api parameters
     [Arguments]    ${q}
     ...            ${appid}
     ...            ${units}
