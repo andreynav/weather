@@ -12,21 +12,22 @@ Converting Measure Temp1 To Measure Temp2
         IF    "${expectedMeasure}" == "metric"
             ${convertedValue}    BuiltIn.Evaluate    round( ${temperature} - 273.15, 2)
         ELSE
-            #${expectedMeasure} == "imperial"
+            BuiltIn.Log    expectedMeasure == imperial
             ${convertedValue}    BuiltIn.Evaluate    round( ((${temperature} - 273.15) * 9/5 + 32), 2)
         END
     ELSE IF    "${currentMeasure}" == "metric"
         IF    "${expectedMeasure}" == "standard"
             ${convertedValue}    BuiltIn.Evaluate    round( ${temperature} + 273.15, 2)
         ELSE
-            #${expectedMeasure} == "imperial"
+            BuiltIn.Log    expectedMeasure == imperial
             ${convertedValue}    BuiltIn.Evaluate    round( (${temperature} * 9/5) + 32, 2)
         END
-    ELSE    #${currentMeasure} == "imperial"
+    ELSE
+         BuiltIn.Log    currentMeasure == imperial
          IF    "${expectedMeasure}" == "standard"
             ${convertedValue}    BuiltIn.Evaluate    round( ((${temperature} - 32) * 5/9) + 273.15, 2)
         ELSE
-            #${expectedMeasure} == "metric"
+            BuiltIn.Log    expectedMeasure == metric
             ${convertedValue}    BuiltIn.Evaluate    round( ((${temperature} - 32) * 5/9), 2)
         END
     END
