@@ -11,14 +11,27 @@ Get Weather Via Api By Name And Cord And Id
     ${JSON_PATH.name}   ${BELMOPAN}              ${{ dict(lat="${COORD_BELMOPAN.lat}", lon="${COORD_BELMOPAN.lon}", appid="${APP_ID}") }}
     ${JSON_PATH.name}   ${BELMOPAN}              ${{ dict(id="${BELMOPAN_ID}", appid="${APP_ID}") }}
 
-Get Weather Via Api By Name And Units
-    [Documentation]    Get weather via certain parameters: name, units
-    [Template]    Get Weather By Parameters
-    ${JSON_PATH.temperature}    ${{ dict(q="${BELMOPAN}", units="standard", appid="${APP_ID}") }}
-    ${JSON_PATH.temperature}    ${{ dict(q="${BELMOPAN}", units="metric", appid="${APP_ID}") }}
-    ${JSON_PATH.temperature}    ${{ dict(q="${BELMOPAN}", units="imperial", appid="${APP_ID}") }}
-    ${JSON_PATH.temperature}    ${{ dict(q="${BELMOPAN}", appid="${APP_ID}") }}
-    ${JSON_PATH.temperature}    ${{ dict(q="${BELMOPAN}", units="invalid", appid="${APP_ID}") }}
+Get Weather Via
+    [Documentation]    Get weather via certain parameters: name, units, id
+    [Template]    Get City Temperature Via Units And Verify Measure
+    ${JSON_PATH.temperature}    q=${BELMOPAN}    appid=${APP_ID}    units=standard
+    ${JSON_PATH.temperature}    q=${BELMOPAN}    appid=${APP_ID}    units=metric
+    ${JSON_PATH.temperature}    q=${BELMOPAN}    appid=${APP_ID}    units=imperial
+    ${JSON_PATH.temperature}    q=${BELMOPAN}    appid=${APP_ID}    units=
+    ${JSON_PATH.temperature}    q=${BELMOPAN}    appid=${APP_ID}    units=invalid
 
+*** Keywords ***
+#Get Weather By Parameters And Verify Results
+#    [Documentation]    Get weather for a city via certain parameters
+#    [Arguments]    ${jsonPath}
+#    ...            ${expectedResult}
+#    ...            ${params}
+#    ${response}    GET    ${API_URL}
+#    ...                   ${params}
+#    RequestsLibrary.Status Should Be    ${CODE_SUCCESS}
+#    ${value}    Get Value From Json    ${response.json()}
+#    ...                                ${jsonPath}
+#    BuiltIn.Should Be Equal As Strings   ${value[0]}
+#    ...                                  ${expectedResult}
 
 
