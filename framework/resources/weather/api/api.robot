@@ -2,41 +2,6 @@
 Resource    ../../../../import.resource
 
 *** Keywords ***
-Get Weather By Parameters And Verify Results
-    [Documentation]    Get weather for a city via certain parameters
-    [Arguments]    ${jsonPath}
-    ...            ${expectedResult}
-    ...            ${params}
-    ${value}    api.Get Value For Specific JPath    ${jsonPath}
-    ...                                             ${params}
-    BuiltIn.Should Be Equal As Strings   ${value}
-    ...                                  ${expectedResult}
-
-Get City Temperature Via Units And Verify Measure
-    [Documentation]
-    [Arguments]    ${jsonPath}
-    ...            ${q}
-    ...            ${appid}
-    ...            ${units}
-    BuiltIn.Log Many    Step 1: получить данные о погоде для города ${q} с использованием параметра ${units}
-    ...                 ER 1: температура выводится в ${units}
-    ${params1}    api.Create Valid Dictionary Of Params    q=${q}
-    ...                                                    appid=${appid}
-    ...                                                    units=${units}
-    ${temp1}    api.Get Value For Specific JPath    ${jsonPath}
-    ...                                             ${params1}
-    ${measureTemp2}    api.Get Random Measure Except    ${params1.units}
-    ${params2}    api.Create Valid Dictionary Of Params    q=${q}
-    ...                                                    appid=${appid}
-    ...                                                    units=${measureTemp2}
-    ${temp2}    api.Get Value For Specific JPath    ${jsonPath}
-    ...                                             ${params2}
-    ${convertedTemp2ToTemp1}    api.Converting Measure Temp1 To Measure Temp2    ${temp2}
-    ...                                                                          ${measureTemp2}
-    ...                                                                          ${params1.units}
-    BuiltIn.Should Be Equal As Strings    ${temp1}
-    ...                                   ${convertedTemp2ToTemp1}
-
 Converting Measure Temp1 To Measure Temp2
     [Documentation]    Get three params: temperature, current temperature measure, and expected temperature measure,\n
     ...                then convert the first one to another and return the result
