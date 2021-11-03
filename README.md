@@ -68,3 +68,7 @@ To run tests, open the root of the project and run the following command:
 flag `-d` points the output report directory 
 \
 flag `-L` points the output report level   
+
+## License
+
+The project is open source software provided under the [Apache License 2.0](LICENSE.md).
