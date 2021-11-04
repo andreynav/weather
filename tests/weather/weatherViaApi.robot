@@ -45,7 +45,7 @@ Get City Temperature Via Units And Verify Measure
     ...                                                    units=${units}
     ${temp1}    api.Get Value For Specific JPath    ${jsonPath}
     ...                                             ${params1}
-    ${measureTemp2}    api.Get Random Measure Except    ${params1.units}
+    ${measureTemp2}    api.Get Random Measure Except    ${params1}[units]
     ${params2}    api.Create Valid Dictionary Of Params    q=${q}
     ...                                                    appid=${appid}
     ...                                                    units=${measureTemp2}
@@ -53,7 +53,7 @@ Get City Temperature Via Units And Verify Measure
     ...                                             ${params2}
     ${convertedTemp2ToTemp1}    api.Converting Measure Temp1 To Measure Temp2    ${temp2}
     ...                                                                          ${measureTemp2}
-    ...                                                                          ${params1.units}
+    ...                                                                          ${params1}[units]
     BuiltIn.Should Be Equal As Strings    ${temp1}
     ...                                   ${convertedTemp2ToTemp1}
 

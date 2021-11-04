@@ -20,7 +20,7 @@ Sum Should Be Equal
 
 Get Current Time
     Collections.Append To List    ${HW_TIMESTAMP}
-    ...                           ${{currentTime.getnow()}}
+    ...                           ${{ currentTime.getnow() }}
 
 Difference Should Be Equal
     [Arguments]    ${val}
