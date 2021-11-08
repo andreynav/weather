@@ -51,9 +51,9 @@ Get City Temperature Via Units And Verify Measure
     ...                                                                                    units=${measure_temperature_two}
     ${temperature_two}    api.Get Value For Specific JPath    ${json_path}
     ...                                                       ${dictionary_with_temperature_measure_two}
-    ${converted_temperature_two_to_temperature_one}    api.Converting Measure Temperature One To Measure Temperature Two    ${temperature_two}
-    ...                                                                                                                     ${measure_temperature_two}
-    ...                                                                                                                     ${dictionary_with_temperature_measure_one}[units]
+    ${converted_temperature_two_to_temperature_one}    convert_temperature_measure.Converting Measure Temperature One To Measure Temperature Two    ${temperature_two}
+    ...                                                                                                                                             ${measure_temperature_two}
+    ...                                                                                                                                             ${dictionary_with_temperature_measure_one}[units]
     BuiltIn.Should Be Equal As Strings    ${temperature_one}
     ...                                   ${converted_temperature_two_to_temperature_one}
 
