@@ -22,40 +22,40 @@ Get Weather Via
 *** Keywords ***
 Get Weather By Parameters And Verify Results
     [Documentation]    Get weather for a city via certain parameters
-    [Arguments]    ${jsonPath}
-    ...            ${expectedResult}
+    [Arguments]    ${json_path}
+    ...            ${expected_result}
     ...            ${params}
     BuiltIn.Log Many    Step 1: получить данные о погоде с использованием параметров
-    ...                 ER 1: результаты выводится для ${expectedResult}
-    ${value}    api.Get Value For Specific JPath    ${jsonPath}
+    ...                 ER 1: результаты выводится для ${expected_result}
+    ${value}    api.Get Value For Specific JPath    ${json_path}
     ...                                             ${params}
     BuiltIn.Should Be Equal As Strings   ${value}
-    ...                                  ${expectedResult}
+    ...                                  ${expected_result}
 
 Get City Temperature Via Units And Verify Measure
     [Documentation]
-    [Arguments]    ${jsonPath}
+    [Arguments]    ${json_path}
     ...            ${q}
     ...            ${appid}
     ...            ${units}
     BuiltIn.Log Many    Step 1: получить данные о погоде для города ${q} с использованием параметра ${units}
     ...                 ER 1: температура выводится в ${units}
-    ${params1}    api.Create Valid Dictionary Of Params    q=${q}
-    ...                                                    appid=${appid}
-    ...                                                    units=${units}
-    ${temp1}    api.Get Value For Specific JPath    ${jsonPath}
-    ...                                             ${params1}
-    ${measureTemp2}    api.Get Random Measure Except    ${params1}[units]
-    ${params2}    api.Create Valid Dictionary Of Params    q=${q}
-    ...                                                    appid=${appid}
-    ...                                                    units=${measureTemp2}
-    ${temp2}    api.Get Value For Specific JPath    ${jsonPath}
-    ...                                             ${params2}
-    ${convertedTemp2ToTemp1}    api.Converting Measure Temp1 To Measure Temp2    ${temp2}
-    ...                                                                          ${measureTemp2}
-    ...                                                                          ${params1}[units]
-    BuiltIn.Should Be Equal As Strings    ${temp1}
-    ...                                   ${convertedTemp2ToTemp1}
+    ${dictionary_with_temperature_measure_one}    api.Create Valid Dictionary Of Params    q=${q}
+    ...                                                                                    appid=${appid}
+    ...                                                                                    units=${units}
+    ${temperature_one}    api.Get Value For Specific JPath    ${json_path}
+    ...                                                       ${dictionary_with_temperature_measure_one}
+    ${measure_temperature_two}    api.Get Random Measure Except    ${dictionary_with_temperature_measure_one}[units]
+    ${dictionary_with_temperature_measure_two}    api.Create Valid Dictionary Of Params    q=${q}
+    ...                                                                                    appid=${appid}
+    ...                                                                                    units=${measure_temperature_two}
+    ${temperature_two}    api.Get Value For Specific JPath    ${json_path}
+    ...                                                       ${dictionary_with_temperature_measure_two}
+    ${converted_temperature_two_to_temperature_one}    api.Converting Measure Temperature One To Measure Temperature Two    ${temperature_two}
+    ...                                                                                                                     ${measure_temperature_two}
+    ...                                                                                                                     ${dictionary_with_temperature_measure_one}[units]
+    BuiltIn.Should Be Equal As Strings    ${temperature_one}
+    ...                                   ${converted_temperature_two_to_temperature_one}
 
 
 

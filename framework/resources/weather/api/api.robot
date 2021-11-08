@@ -2,54 +2,54 @@
 Resource    ../../../../import.resource
 
 *** Keywords ***
-Converting Measure Temp1 To Measure Temp2
+Converting Measure Temperature One To Measure Temperature Two
     [Documentation]    Get three params: temperature, current temperature measure, and expected temperature measure,\n
     ...                then convert the first one to another and return the result
     [Arguments]    ${temperature}
-    ...            ${currentMeasure}
-    ...            ${expectedMeasure}
-    IF    "${currentMeasure}" == "standard"
-        IF    "${expectedMeasure}" == "metric"
-            ${convertedValue}    BuiltIn.Evaluate    round( ${temperature} - 273.15, 2)
+    ...            ${current_measure}
+    ...            ${expected_measure}
+    IF    "${current_measure}" == "standard"
+        IF    "${expected_measure}" == "metric"
+            ${converted_value}    BuiltIn.Evaluate    round( ${temperature} - 273.15, 2)
         ELSE
-            BuiltIn.Log    expectedMeasure == imperial
-            ${convertedValue}    BuiltIn.Evaluate    round( ((${temperature} - 273.15) * 9/5 + 32), 2)
+            BuiltIn.Log    expected_measure == imperial
+            ${converted_value}    BuiltIn.Evaluate    round( ((${temperature} - 273.15) * 9/5 + 32), 2)
         END
-    ELSE IF    "${currentMeasure}" == "metric"
-        IF    "${expectedMeasure}" == "standard"
-            ${convertedValue}    BuiltIn.Evaluate    round( ${temperature} + 273.15, 2)
+    ELSE IF    "${current_measure}" == "metric"
+        IF    "${expected_measure}" == "standard"
+            ${converted_value}    BuiltIn.Evaluate    round( ${temperature} + 273.15, 2)
         ELSE
-            BuiltIn.Log    expectedMeasure == imperial
-            ${convertedValue}    BuiltIn.Evaluate    round( (${temperature} * 9/5) + 32, 2)
+            BuiltIn.Log    expected_measure == imperial
+            ${converted_value}    BuiltIn.Evaluate    round( (${temperature} * 9/5) + 32, 2)
         END
     ELSE
-         BuiltIn.Log    currentMeasure == imperial
-         IF    "${expectedMeasure}" == "standard"
-            ${convertedValue}    BuiltIn.Evaluate    round( ((${temperature} - 32) * 5/9) + 273.15, 2)
+         BuiltIn.Log    current_measure == imperial
+         IF    "${expected_measure}" == "standard"
+            ${converted_value}    BuiltIn.Evaluate    round( ((${temperature} - 32) * 5/9) + 273.15, 2)
         ELSE
-            BuiltIn.Log    expectedMeasure == metric
-            ${convertedValue}    BuiltIn.Evaluate    round( ((${temperature} - 32) * 5/9), 2)
+            BuiltIn.Log    expected_measure == metric
+            ${converted_value}    BuiltIn.Evaluate    round( ((${temperature} - 32) * 5/9), 2)
         END
     END
-    [Return]    ${convertedValue}
+    [Return]    ${converted_value}
 
 Get Random Measure Except
     [Documentation]    Get random temperature measure except getting as parameter
-    [Arguments]    ${existingMeasure}
-    ${unitKeys}    Collections.Get Dictionary Keys    ${UNITS}
-    ${randomMeausure}    random_list.Get Random Item Except Current From List    ${existingMeasure}
-    ...                                                                         ${unitKeys}
-    [Return]    ${randomMeausure}
+    [Arguments]    ${existing_measure}
+    ${unit_keys}    Collections.Get Dictionary Keys    ${UNITS}
+    ${random_meausure}    random_list.Get Random Item Except Current From List    ${existing_measure}
+    ...                                                                           ${unit_keys}
+    [Return]    ${random_meausure}
 
 Get Value For Specific JPath
     [Documentation]    Get value of specific parameter for a city
-    [Arguments]    ${jsonPath}
+    [Arguments]    ${json_path}
     ...            ${params}
     ${response}    RequestsLibrary.GET    ${API_URL}
     ...                                   ${params}
     RequestsLibrary.Status Should Be    ${CODE_SUCCESS}
     ${temperature}    JSONLibrary.Get Value From Json    ${response.json()}
-    ...                                                  ${jsonPath}
+    ...                                                  ${json_path}
     [Return]    ${temperature[0]}
 
 Create Valid Dictionary Of Params
@@ -60,5 +60,5 @@ Create Valid Dictionary Of Params
     ${params}    BuiltIn.Create Dictionary    q=${q}
     ...                                       appid=${appid}
     ...                                       units=${units}
-    ${paramUpdated}    random_list.Default Param    ${params}
-    [Return]    ${paramUpdated}
+    ${updated_params}    random_list.Default Param    ${params}
+    [Return]    ${updated_params}
