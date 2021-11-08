@@ -17,18 +17,3 @@ def get_random_item_from_list(list_items, except_item=None):
             return random.choice(list_items)
     except ValueError:
         print("The current parameters are unknown")
-
-
-def default_param(param):
-    try:
-        if 'units' not in param:
-            param['units'] = 'standard'
-        elif param['units'] == "imperial":
-            param['units'] = "imperial"
-        elif param['units'] == "metric":
-            param['units'] = "metric"
-        elif param['units'] != "imperial" or param['units'] != "metric":
-            param['units'] = "standard"
-    except ValueError:
-        print("The current parameters are unknown")
-    return param

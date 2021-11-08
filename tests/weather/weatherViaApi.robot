@@ -16,7 +16,7 @@ Get Weather Via
     ${JSON_PATH.temperature}    q=${BELMOPAN}    appid=${APP_ID}    units=standard
     ${JSON_PATH.temperature}    q=${BELMOPAN}    appid=${APP_ID}    units=metric
     ${JSON_PATH.temperature}    q=${BELMOPAN}    appid=${APP_ID}    units=imperial
-    ${JSON_PATH.temperature}    q=${BELMOPAN}    appid=${APP_ID}    units=
+    ${JSON_PATH.temperature}    q=${BELMOPAN}    appid=${APP_ID}
     ${JSON_PATH.temperature}    q=${BELMOPAN}    appid=${APP_ID}    units=invalid
 
 *** Keywords ***
@@ -37,18 +37,18 @@ Get City Temperature Via Units And Verify Measure
     [Arguments]    ${json_path}
     ...            ${q}
     ...            ${appid}
-    ...            ${units}
+    ...            ${units}=None
     BuiltIn.Log Many    Step 1: получить данные о погоде для города ${q} с использованием параметра ${units}
     ...                 ER 1: температура выводится в ${units}
-    ${dictionary_with_temperature_measure_one}    api.Create Valid Dictionary Of Params    q=${q}
-    ...                                                                                    appid=${appid}
-    ...                                                                                    units=${units}
+    ${dictionary_with_temperature_measure_one}    create_dictionary_of_units.Create Dictionary Of Units Params    q=${q}
+    ...                                                                                                           appid=${appid}
+    ...                                                                                                           units=${units}
     ${temperature_one}    api.Get Value For Specific JPath    ${json_path}
     ...                                                       ${dictionary_with_temperature_measure_one}
     ${measure_temperature_two}    api.Get Random Measure Except    ${dictionary_with_temperature_measure_one}[units]
-    ${dictionary_with_temperature_measure_two}    api.Create Valid Dictionary Of Params    q=${q}
-    ...                                                                                    appid=${appid}
-    ...                                                                                    units=${measure_temperature_two}
+    ${dictionary_with_temperature_measure_two}    create_dictionary_of_units.Create Dictionary Of Units Params    q=${q}
+    ...                                                                                                           appid=${appid}
+    ...                                                                                                           units=${measure_temperature_two}
     ${temperature_two}    api.Get Value For Specific JPath    ${json_path}
     ...                                                       ${dictionary_with_temperature_measure_two}
     ${converted_temperature_two_to_temperature_one}    convert_temperature_measure.Converting Measure Temperature One To Measure Temperature Two    ${temperature_two}

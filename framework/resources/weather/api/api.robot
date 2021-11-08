@@ -21,13 +21,3 @@ Get Value For Specific JPath
     ...                                                  ${json_path}
     [Return]    ${temperature[0]}
 
-Create Valid Dictionary Of Params
-    [Documentation]   Get query params, verify them and create dictionary with valid api parameters
-    [Arguments]    ${q}
-    ...            ${appid}
-    ...            ${units}
-    ${params}    BuiltIn.Create Dictionary    q=${q}
-    ...                                       appid=${appid}
-    ...                                       units=${units}
-    ${updated_params}    random_list.Default Param    ${params}
-    [Return]    ${updated_params}
