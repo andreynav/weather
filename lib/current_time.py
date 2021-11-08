@@ -1,6 +1,6 @@
 import datetime
 
 
-def getnow():
+def get_now():
     return int(datetime.datetime.now().timestamp())
 

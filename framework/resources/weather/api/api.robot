@@ -37,7 +37,7 @@ Get Random Measure Except
     [Documentation]    Get random temperature measure except getting as parameter
     [Arguments]    ${existingMeasure}
     ${unitKeys}    Collections.Get Dictionary Keys    ${UNITS}
-    ${randomMeausure}    randomList.Get Random Item Except Current From List    ${existingMeasure}
+    ${randomMeausure}    random_list.Get Random Item Except Current From List    ${existingMeasure}
     ...                                                                         ${unitKeys}
     [Return]    ${randomMeausure}
 
@@ -60,5 +60,5 @@ Create Valid Dictionary Of Params
     ${params}    BuiltIn.Create Dictionary    q=${q}
     ...                                       appid=${appid}
     ...                                       units=${units}
-    ${paramUpdated}    randomList.Default Param    ${params}
+    ${paramUpdated}    random_list.Default Param    ${params}
     [Return]    ${paramUpdated}
