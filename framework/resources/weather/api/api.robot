@@ -6,8 +6,8 @@ Get Random Measure Except
     [Documentation]    Get random temperature measure except getting as parameter
     [Arguments]    ${existing_measure}
     ${unit_keys}    Collections.Get Dictionary Keys    ${UNITS}
-    ${random_meausure}    random_list.Get Random Item Except Current From List    ${existing_measure}
-    ...                                                                           ${unit_keys}
+    ${random_meausure}    random_list.Get Random Item From List    ${unit_keys}
+    ...                                                            ${existing_measure}
     [Return]    ${random_meausure}
 
 Get Value For Specific JPath
