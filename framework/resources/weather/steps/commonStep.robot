@@ -30,3 +30,4 @@ Verify Unique Page Element
     BuiltIn.Should Be Equal    ${currentValue}
     ...                        ${value}
     ...                        The value does not equal required
+
