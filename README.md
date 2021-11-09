@@ -9,7 +9,7 @@ The project used the commonly used design patterns like Page object, Page elemen
 
 The project has multilayer structure: 
 - `env` - used to keep a virtual environment (can be kept in another place)
-- `framework` - used to keep variables, specific keywords that can be used only in current projects
+- `framework` - used to keep variables, specific libraries and keywords that can be used only in current projects
 - `lib` - used to keep custom libraries that can be reused in any other projects
 - `output` - used to keep test reports 
 - `tests` - contains test
@@ -22,6 +22,7 @@ The project has multilayer structure:
 │       └── python3.9
 ├── framework
 │   ├── data
+│   └── lib
 │   └── resources
 │       ├── homework
 │       └── weather
