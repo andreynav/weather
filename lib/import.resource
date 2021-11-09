@@ -1,3 +1,3 @@
 *** Settings ***
-Library    current_time.py
-Library    random_list.py
+Library    current_time.py    WITH NAME    CurrentTime
+Library    random_list.py    WITH NAME    RandomList
