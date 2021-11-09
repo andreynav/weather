@@ -1,3 +1,7 @@
+from robot.api.deco import keyword
+
+
+@keyword(name="Convert Measure Temperature")
 def converting_measure_temperature_one_to_measure_temperature_two(temperature, current_measure, expected_measure):
     """ Convert temperature of current measure to temperature of expected measure and return result
     :param str temperature: the current temperature in current_measure

@@ -40,20 +40,20 @@ Get City Temperature Via Units And Verify Measure
     ...            ${units}=None
     BuiltIn.Log Many    Step 1: получить данные о погоде для города ${q} с использованием параметра ${units}
     ...                 ER 1: температура выводится в ${units}
-    ${dictionary_with_temperature_measure_one}    CreateDict.Create Dictionary Of Units Params    q=${q}
-    ...                                                                                           appid=${appid}
-    ...                                                                                           units=${units}
+    ${dictionary_with_temperature_measure_one}    CreateDict.Create Params Dictionary    q=${q}
+    ...                                                                                  appid=${appid}
+    ...                                                                                  units=${units}
     ${temperature_one}    api.Get Value For Specific JPath    ${json_path}
     ...                                                       ${dictionary_with_temperature_measure_one}
     ${measure_temperature_two}    api.Get Random Measure Except    ${dictionary_with_temperature_measure_one}[units]
-    ${dictionary_with_temperature_measure_two}    CreateDict.Create Dictionary Of Units Params    q=${q}
-    ...                                                                                           appid=${appid}
-    ...                                                                                           units=${measure_temperature_two}
+    ${dictionary_with_temperature_measure_two}    CreateDict.Create Params Dictionary    q=${q}
+    ...                                                                                  appid=${appid}
+    ...                                                                                  units=${measure_temperature_two}
     ${temperature_two}    api.Get Value For Specific JPath    ${json_path}
     ...                                                       ${dictionary_with_temperature_measure_two}
-    ${converted_temperature_two_to_temperature_one}    ConvertTemp.Converting Measure Temperature One To Measure Temperature Two    ${temperature_two}
-    ...                                                                                                                                             ${measure_temperature_two}
-    ...                                                                                                                                             ${dictionary_with_temperature_measure_one}[units]
+    ${converted_temperature_two_to_temperature_one}    ConvertTemp.Convert Measure Temperature    ${temperature_two}
+    ...                                                                                           ${measure_temperature_two}
+    ...                                                                                           ${dictionary_with_temperature_measure_one}[units]
     BuiltIn.Should Be Equal As Strings    ${temperature_one}
     ...                                   ${converted_temperature_two_to_temperature_one}
 

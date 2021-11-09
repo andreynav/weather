@@ -1,6 +1,8 @@
 import random
+from robot.api.deco import keyword
 
 
+@keyword(name="Get Random Item From List")
 def get_random_item_from_list(list_items, except_item=None):
     """ Get random item from list and return it
     :param str list_items: the list of items
