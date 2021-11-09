@@ -2,11 +2,11 @@ from robot.api.deco import keyword
 
 
 @keyword(name="Create Params Dictionary")
-def create_dictionary_of_units_params(**kwargs):
-    """ Create valid dictionary of parameters with units param anr return it
-    :param dict kwargs: variable number of arguments like key=value
+def create_dictionary_of_units_params(**kwargs: str) -> dict:
+    """
+    Create valid dictionary of parameters with units param anr return it
+    :param kwargs: variable number of arguments like key=value
     :return: dictionary
-    :rtype: dict
     :raises ValueError: thrown if the current parameters are unknown
     """
     try:
