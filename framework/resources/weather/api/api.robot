@@ -7,7 +7,7 @@ Get Random Measure Except
     [Arguments]    ${existing_measure}
     ${unit_keys}    Collections.Get Dictionary Keys    ${UNITS}
     ${random_meausure}    RandomList.Get Random Item From List    ${unit_keys}
-    ...                                                            ${existing_measure}
+    ...                                                           ${existing_measure}
     [Return]    ${random_meausure}
 
 Get Value For Specific JPath

@@ -40,22 +40,22 @@ Get City Temperature Via Units And Verify Measure
     ...            ${units}=None
     BuiltIn.Log Many    Step 1: получить данные о погоде для города ${q} с использованием параметра ${units}
     ...                 ER 1: температура выводится в ${units}
-    ${dictionary_with_temperature_measure_one}    CreateDict.Create Params Dictionary    q=${q}
-    ...                                                                                  appid=${appid}
-    ...                                                                                  units=${units}
-    ${temperature_one}    api.Get Value For Specific JPath    ${json_path}
-    ...                                                       ${dictionary_with_temperature_measure_one}
-    ${measure_temperature_two}    api.Get Random Measure Except    ${dictionary_with_temperature_measure_one}[units]
-    ${dictionary_with_temperature_measure_two}    CreateDict.Create Params Dictionary    q=${q}
-    ...                                                                                  appid=${appid}
-    ...                                                                                  units=${measure_temperature_two}
+    ${dict_with_temperature_measure_1}    CreateDict.Create Params Dictionary    q=${q}
+    ...                                                                          appid=${appid}
+    ...                                                                          units=${units}
+    ${temperature_1}    api.Get Value For Specific JPath    ${json_path}
+    ...                                                     ${dict_with_temperature_measure_1}
+    ${measure_temperature_2}    api.Get Random Measure Except    ${dict_with_temperature_measure_1}[units]
+    ${dict_with_temperature_measure_2}    CreateDict.Create Params Dictionary    q=${q}
+    ...                                                                          appid=${appid}
+    ...                                                                          units=${measure_temperature_2}
     ${temperature_two}    api.Get Value For Specific JPath    ${json_path}
-    ...                                                       ${dictionary_with_temperature_measure_two}
-    ${converted_temperature_two_to_temperature_one}    ConvertTemp.Convert Measure Temperature    ${temperature_two}
-    ...                                                                                           ${measure_temperature_two}
-    ...                                                                                           ${dictionary_with_temperature_measure_one}[units]
-    BuiltIn.Should Be Equal As Strings    ${temperature_one}
-    ...                                   ${converted_temperature_two_to_temperature_one}
+    ...                                                       ${dict_with_temperature_measure_2}
+    ${converted_temperature_two}    ConvertTemp.Convert Measure Temperature    ${temperature_two}
+    ...                                                                        ${measure_temperature_2}
+    ...                                                                        ${dict_with_temperature_measure_1}[units]
+    BuiltIn.Should Be Equal As Strings    ${temperature_1}
+    ...                                   ${converted_temperature_two}
 
 
 
