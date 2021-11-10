@@ -1,5 +1,5 @@
 *** Settings ***
-Library    SeleniumLibrary
+Resource    ../../import.resource
 
 *** Variables ***
 ${PROFILE_USER_SETTINGS_ITEM_MENU_LOCATOR}    //ul[contains(@class,"nav-pills")]//a[@href='/home']

@@ -1,5 +1,5 @@
 *** Settings ***
-Library    SeleniumLibrary
+Resource    ../../import.resource
 
 *** Variables ***
 ${NAVBAR_SIGNIN_ITEM_LOCATOR}         //li[contains(@class,"user-li")]/a

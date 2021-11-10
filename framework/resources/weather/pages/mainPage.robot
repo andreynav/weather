@@ -7,6 +7,7 @@ ${MAIN_ARTICLE1_TITLE_LOCATOR}    //h2[contains(text(),'Historical weather for a
 ${MAIN_ARTICLE1_TITLE_VALUE}      Historical weather for any location
 ${MAIN_SEARCH_LOCATOR}            //*[@name="q"]
 ${TEMPERATURE_RESULT_LOCATOR}     //span[contains(text(),'°С ')]
+${SEPARATOR}                      °
 
 *** Keywords ***
 Go To Main Page
@@ -24,6 +25,6 @@ Get Search Temperature
     [Documentation]    Get the search temperature result
     SeleniumLibrary.Wait Until Element Is Visible    locator=${TEMPERATURE_RESULT_LOCATOR}
     ${temperature}    SeleniumLibrary.Get Text    locator=${TEMPERATURE_RESULT_LOCATOR}
-    ${parsedTemperature}    CustomString.Get Split String    ${temperature}    °    0    #WTF???
+    ${parsedTemperature}    CustomString.Get Split String    ${temperature}    ${SEPARATOR}    0
     [Return]    ${parsedTemperature}
 
