@@ -21,6 +21,7 @@ Enter Value To Search Field
 Verify Search Temperature
     [Documentation]    Verify the search temperature result to API temperature
     [Arguments]    ${temperatureAPI}
+    ${temperatureAPI}    BuiltIn.Evaluate    round(float(${temperatureAPI}), 1)
     ${temperatureUI}    mainPage.Get Search Temperature
     BuiltIn.Should Be Equal As Strings    ${temperatureUI}
     ...                                   ${temperatureAPI}

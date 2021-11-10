@@ -16,6 +16,16 @@ Get Weather For City And Compare UI And API Data
     mainStep.Enter Value To Search Field    ${BELMOPAN}
     mainStep.Verify Search Temperature    ${tempViaApi}
 
+    BuiltIn.Log Many    Step 2: Получить данные о погоде через API для города Belmopan в фарингейтах
+    ${dict_with_temperature_measure_1}    CreateDict.Create Params Dictionary    q=${BELMOPAN}
+    ...                                                                          appid=${APP_ID}
+    ...                                                                          units=imperial
+    ${tempViaApi}    api.Get Value For Specific JPath    ${JSON_PATH.temperature}
+    ...                                                  ${dict_with_temperature_measure_1}
+
+    BuiltIn.Log Many    Step 3: Изменить формат температуры на imperial    #imperial уже получен на step 2
+    ...                 ER 3: проверить что данные о погоде соответвуют тому что вернулось с backend
+
     [Teardown]    commonStep.Delete Session
 
 *** Keywords ***
