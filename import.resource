@@ -1,4 +1,9 @@
 *** Settings ***
-Resource        data/import.resource
-Resource        resources/import.resource
+Resource        framework/data/import.resource
+Resource        framework/resources/import.resource
+Resource        framework/lib/import.resource
+Resource        lib/import.resource
+Library         SeleniumLibrary
 Library         Collections
+Library         RequestsLibrary
+Library         JSONLibrary

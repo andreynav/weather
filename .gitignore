@@ -3,4 +3,3 @@ output
 __pycache__/
 .idea/
 *.pyc
-*.py

@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../../import.resource
+Resource    ../../../import.resource
 
 *** Variables ***
 @{HW_TIMESTAMP}
@@ -19,8 +19,9 @@ Sum Should Be Equal
     ...                        The result does not equal addition of variables
 
 Get Current Time
+    ${current}    CurrentTime.Get Now
     Collections.Append To List    ${HW_TIMESTAMP}
-    ...                           ${{currentTime.getnow()}}
+    ...                           ${current}
 
 Difference Should Be Equal
     [Arguments]    ${val}

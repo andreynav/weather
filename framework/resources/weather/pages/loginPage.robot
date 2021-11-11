@@ -1,5 +1,5 @@
 *** Settings ***
-Library    SeleniumLibrary
+Resource    ../../import.resource
 
 *** Variables ***
 ${LOGIN_EMAIL_FIELD_LOCATOR}       //div[@class='input-group']/input[@id='user_email']
