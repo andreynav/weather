@@ -1,6 +1,5 @@
 *** Settings ***
 Resource          ../../import.resource
-#Resource    weatherViaApi.robot
 Suite Setup       commonStep.Open Browser And Maximaze
 Suite Teardown    commonStep.Close Browser
 
