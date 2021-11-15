@@ -1,9 +1,10 @@
 *** Settings ***
-Resource        framework/data/import.resource
-Resource        framework/resources/import.resource
-Resource        framework/lib/import.resource
-Resource        lib/import.resource
-Library         SeleniumLibrary
+Resource        framework/import.resource
+Resource        intro/resources/import.resource
+Resource        weather/data/import.resource
+Resource        weather/lib/import.resource
+Resource        weather/resources/import.resource
 Library         Collections
-Library         RequestsLibrary
 Library         JSONLibrary
+Library         RequestsLibrary
+Library         SeleniumLibrary

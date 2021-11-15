@@ -1,5 +1,5 @@
 *** Settings ***
-Library    SeleniumLibrary
+Resource    ../../import.resource
 
 *** Variables ***
 ${BASE_URL}               openweathermap.org

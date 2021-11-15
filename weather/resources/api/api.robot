@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../../../../import.resource
+Resource    ../../../import.resource
 
 *** Keywords ***
 Get Random Measure Except

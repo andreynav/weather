@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../../import.resource
+Resource    ../../../import.resource
 
 *** Keywords ***
 Go To Main Page

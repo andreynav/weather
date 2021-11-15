@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../../import.resource
+Resource    ../../../import.resource
 
 *** Variables ***
 ${LOGIN_EMAIL_FIELD_LOCATOR}       //div[@class='input-group']/input[@id='user_email']
