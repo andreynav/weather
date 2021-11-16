@@ -8,35 +8,43 @@ The project used the commonly used design patterns like Page object, Page elemen
 ## Project structure
 
 The project has multilayer structure: 
-- `env` - used to keep a virtual environment (can be kept in another place)
-- `framework` - used to keep variables, specific libraries and keywords that can be used only in current projects
-- `lib` - used to keep custom libraries that can be reused in any other projects
+- `framework` - used to keep custom libraries that can be reused in any other projects
+- `intro` - intro project for illustrating how we can use more than one project in repo 
 - `output` - used to keep test reports 
-- `tests` - contains test
+- `weather` - main project
+  - `data` - used to keep variables 
+  - `lib` - used to keep specific libraries
+  - `resources` - used to keep keywords that can be used only in current projects
+  - `tests` - contains tests
 
 ```
 .
-├── env
-│   ├── bin
-│   └── lib
-│       └── python3.9
 ├── framework
-│   ├── data
-│   └── lib
-│   └── resources
-│       ├── homework
-│       └── weather
-│           ├── api
-│           ├── pages
-│           └── steps
-├── lib
+├── intro
+│   ├── resources
+│   └── tests
 ├── output
-└── tests
-    ├── homework
-    └── weather
+└── weather
+    ├── data
+    ├── lib
+    ├── resources
+    │   ├── api
+    │   ├── pages
+    │   └── steps
+    └── tests
 ```
+## Scheme of project interactions
 
-  
+TThe project interactions between layers is displayed on the next scheme:
+
+![scheme](scheme.png?raw=true)
+
+The TESTS layer can interact with the DATA, PAGES (API), and STEPS layers. The gray arrow from STEPS to ROBOT LIBS means that the Log keyword of the robot framework can be used for logging. Any other direct interaction with ROBOT LIBS from STEPS is limited. 
+
+The STEPS layer can interact with the PAGES (API) and ROBOT LIBS layers.
+
+The PAGES layer includes sublayers PAGES (an entity of Page object pattern) and API sublayer. Can interact with FRAMEWORK, ROBOT LIBS, LIB, and DATA layers.
+ 
 ## Dependencies
 
 The project has the next dependencies in the [requirements](requirements.txt) file
