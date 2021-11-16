@@ -26,7 +26,7 @@ Verify Unique Page Element
     [Documentation]    Verify the unique page element value
     [Arguments]    ${locator}
     ...            ${value}
-    ${currentValue}    common.Get Unique Page Element    ${locator}
+    ${currentValue}    Common.Get Unique Page Element    ${locator}
     BuiltIn.Should Be Equal    ${currentValue}
     ...                        ${value}
     ...                        The value does not equal required

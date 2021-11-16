@@ -27,7 +27,7 @@ Get Weather By Parameters And Verify Results
     ...            ${params}
     BuiltIn.Log Many    Step 1: получить данные о погоде с использованием параметров
     ...                 ER 1: результаты выводится для ${expected_result}
-    ${value}    api.Get Value For Specific JPath    ${json_path}
+    ${value}    Api.Get Value For Specific JPath    ${json_path}
     ...                                             ${params}
     BuiltIn.Should Be Equal As Strings   ${value}
     ...                                  ${expected_result}
@@ -43,13 +43,13 @@ Get City Temperature Via Units And Verify Measure
     ${dict_with_temperature_measure_1}    CreateDict.Create Params Dictionary    q=${q}
     ...                                                                          appid=${appid}
     ...                                                                          units=${units}
-    ${temperature_1}    api.Get Value For Specific JPath    ${json_path}
+    ${temperature_1}    Api.Get Value For Specific JPath    ${json_path}
     ...                                                     ${dict_with_temperature_measure_1}
-    ${measure_temperature_2}    api.Get Random Measure Except    ${dict_with_temperature_measure_1}[units]
+    ${measure_temperature_2}    Api.Get Random Measure Except    ${dict_with_temperature_measure_1}[units]
     ${dict_with_temperature_measure_2}    CreateDict.Create Params Dictionary    q=${q}
     ...                                                                          appid=${appid}
     ...                                                                          units=${measure_temperature_2}
-    ${temperature_two}    api.Get Value For Specific JPath    ${json_path}
+    ${temperature_two}    Api.Get Value For Specific JPath    ${json_path}
     ...                                                       ${dict_with_temperature_measure_2}
     ${converted_temperature_two}    ConvertTemp.Convert Measure Temperature    ${temperature_two}
     ...                                                                        ${measure_temperature_2}

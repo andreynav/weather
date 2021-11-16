@@ -1,2 +1,2 @@
 *** Settings ***
-Resource        hwOneKeywords.robot
+Resource        HwOneKeywords.robot

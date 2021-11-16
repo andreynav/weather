@@ -1,12 +1,12 @@
 *** Settings ***
-Resource        pages/loginPage.robot
-Resource        pages/mainPage.robot
-Resource        pages/navbar.robot
-Resource        pages/profilePage.robot
-Resource        steps/commonStep.robot
-Resource        steps/loginStep.robot
-Resource        steps/mainStep.robot
-Resource        steps/navbarStep.robot
-Resource        steps/profileStep.robot
-Resource        common.robot
-Resource        api/api.robot
+Resource        pages/LoginPage.robot
+Resource        pages/MainPage.robot
+Resource        pages/Navbar.robot
+Resource        pages/ProfilePage.robot
+Resource        steps/CommonStep.robot
+Resource        steps/LoginStep.robot
+Resource        steps/MainStep.robot
+Resource        steps/NavbarStep.robot
+Resource        steps/ProfileStep.robot
+Resource        Common.robot
+Resource        api/Api.robot

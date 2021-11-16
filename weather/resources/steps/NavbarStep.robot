@@ -5,7 +5,7 @@ Resource    ../../../import.resource
 Verify User Name
     [Documentation]    Verify the user ${name} is displayed in navbar
     [Arguments]    ${name}
-    ${userName}    navbar.Get User Name
+    ${userName}    Navbar.Get User Name
     BuiltIn.Should Be Equal    ${userName}
     ...                        ${name}
     ...                        The name does not equal exisitng
