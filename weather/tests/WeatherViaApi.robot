@@ -25,8 +25,8 @@ Get Weather By Parameters And Verify Results
     [Arguments]    ${json_path}
     ...            ${expected_result}
     ...            ${params}
-    BuiltIn.Log Many    Step 1: получить данные о погоде с использованием параметров
-    ...                 ER 1: результаты выводится для ${expected_result}
+    BuiltIn.Log Many    Step 1: Get weather using parameters
+    ...                 ER 1: Results are displayed for ${expected_result}
     ${value}    Api.Get Value For Specific JPath    ${json_path}
     ...                                             ${params}
     BuiltIn.Should Be Equal As Strings   ${value}
@@ -38,8 +38,8 @@ Get City Temperature Via Units And Verify Measure
     ...            ${q}
     ...            ${appid}
     ...            ${units}=None
-    BuiltIn.Log Many    Step 1: получить данные о погоде для города ${q} с использованием параметра ${units}
-    ...                 ER 1: температура выводится в ${units}
+    BuiltIn.Log Many    Step 1: Get weather for city ${q} using the parameter ${units}
+    ...                 ER 1: Temperature is displayed in ${units}
     ${dict_with_temperature_measure_1}    CreateDict.Create Params Dictionary    q=${q}
     ...                                                                          appid=${appid}
     ...                                                                          units=${units}

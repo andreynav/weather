@@ -9,21 +9,21 @@ Get Weather For City And Compare UI And API Data
     [Documentation]    User get weather for city via UI and compare to weather via API
     [Setup]    Precondition For Test 001
 
-    BuiltIn.Log Many    Step 1: Найти погоду для города Belmopan
-    ...                 ER 1: проверить что данные о погоде соответвуют тому что вернулось с backend
+    BuiltIn.Log Many    Step 1: Get weather for city 'Belmopan'
+    ...                 ER 1: Verify the weather data matches the data from the back-end
 
     HomeStep.Enter Value To Search Field    ${BELMOPAN}
     HomeStep.Verify Search Temperature    ${tempViaApi}
 
-    BuiltIn.Log Many    Step 2: Получить данные о погоде через API для города Belmopan в фарингейтах
+    BuiltIn.Log Many    Step 2: Get weather via API in 'Fahrenheit' for city 'Belmopan'
     ${dict_with_temperature_measure_1}    CreateDict.Create Params Dictionary    q=${BELMOPAN}
     ...                                                                          appid=${APP_ID}
     ...                                                                          units=imperial
     ${tempViaApi}    Api.Get Value For Specific JPath    ${JSON_PATH.temperature}
     ...                                                  ${dict_with_temperature_measure_1}
 
-    BuiltIn.Log Many    Step 3: Изменить формат температуры на imperial    #imperial уже получен на step 2
-    ...                 ER 3: проверить что данные о погоде соответвуют тому что вернулось с backend
+    BuiltIn.Log Many    Step 3: Change the temperature to 'Celsius'
+    ...                 ER 1: Verify the weather data matches the data from the back-end
 
     [Teardown]    CommonStep.Delete Session
 

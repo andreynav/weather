@@ -22,17 +22,17 @@ Login With Valid And Invalid Credentials
     [Documentation]    User log in with valid and invalid credentials
     [Setup]    LoginStep.Go To Sign In Page
 
-    BuiltIn.Log Many    Step 1: Ввести правильный логин и неправильный пароль
-    ...                 ER 1: отображается  страница логина
-    ...                 ER 2: отображается ошибка о неправильных данных
+    BuiltIn.Log Many    Step 1: Enter valid login and invalid password
+    ...                 ER 1: The login page is displayed
+    ...                 ER 2: The error about invalid data is displayed
     LoginStep.Login With Credentials    ${USER_CREDENTIALS.email}
     ...                                 invalid
     LoginStep.Verify Sign In Page Is Opened
     CommonStep.Verify Alert Is Displayed    ${ALERT_INVALID_CREDS_VALUE}
 
-    BuiltIn.Log Many    Step 2: ввести правильный пароль
-    ...                 ER 1: отображается главная страница  приложения
-    ...                 ER 2: пользователь авторизован в системе
+    BuiltIn.Log Many    Step 2: Enter valid login and password
+    ...                 ER 1: The home page is displayed
+    ...                 ER 2: The user is authorized
     LoginStep.Login With Credentials    ${USER_CREDENTIALS.email}
     ...                                 ${USER_CREDENTIALS.password}
     HomeStep.Verify Main Page Is Opened
