@@ -12,8 +12,8 @@ Get Weather For City And Compare UI And API Data
     BuiltIn.Log Many    Step 1: Найти погоду для города Belmopan
     ...                 ER 1: проверить что данные о погоде соответвуют тому что вернулось с backend
 
-    MainStep.Enter Value To Search Field    ${BELMOPAN}
-    MainStep.Verify Search Temperature    ${tempViaApi}
+    HomeStep.Enter Value To Search Field    ${BELMOPAN}
+    HomeStep.Verify Search Temperature    ${tempViaApi}
 
     BuiltIn.Log Many    Step 2: Получить данные о погоде через API для города Belmopan в фарингейтах
     ${dict_with_temperature_measure_1}    CreateDict.Create Params Dictionary    q=${BELMOPAN}
@@ -33,7 +33,7 @@ Precondition For Test 001
     LoginStep.Go To Sign In Page
     LoginStep.Login With Credentials    ${USER_CREDENTIALS.email}
     ...                                 ${USER_CREDENTIALS.password}
-    MainStep.Verify Main Page Is Opened
+    HomeStep.Verify Main Page Is Opened
     ${dict_with_temperature_measure_1}    CreateDict.Create Params Dictionary    q=${BELMOPAN}
     ...                                                                          appid=${APP_ID}
     ...                                                                          units=metric

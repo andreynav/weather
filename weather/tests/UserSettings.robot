@@ -18,7 +18,7 @@ Change User Name
 
     BuiltIn.Log Many    Step 2: перейти на главную страницу
     ...                 ER 2: новое имя пользователя отображается в навигационном меню
-    MainStep.Go To Main Page
+    HomeStep.Go To Main Page
     NavbarStep.Verify User Name    ${USER_NEXT_NAME}
 
     [Teardown]    Run Keywords    ProfileStep.Open User Settings Page
