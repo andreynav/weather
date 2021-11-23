@@ -30,7 +30,7 @@ Verify API And UI Temperature
     [Documentation]    Verify the API and UI temperatures are equals
     [Arguments]    ${tempUI}
     ...            ${tempAPI}
-    ${tempAPI}    BuiltIn.Evaluate    math.trunc(${tempAPI})
+    ${tempAPI}    BuiltIn.Evaluate    round(${tempAPI})
     BuiltIn.Should Be Equal As Strings    ${tempUI}
     ...                                   ${tempAPI}
     ...                                   The temperature is wrong
