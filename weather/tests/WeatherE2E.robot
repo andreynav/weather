@@ -10,20 +10,28 @@ Get Weather For City And Compare UI And API Data
     [Setup]    Precondition For Test 001
 
     BuiltIn.Log Many    Step 1: Get weather for city 'Belmopan'
-    ...                 ER 1: Verify the weather data matches the data from the back-end
+    ...                 ER 1: Verify the weather data matches the data from the back-end    #add select matric mesure
 
-    HomeStep.Enter Value To Search Field    ${BELMOPAN}
-    HomeStep.Verify Search Temperature    ${tempViaApi}
+    MainStep.Select Measure    C
+    MainStep.Enter Value To Search City    ${BELMOPAN}
+    ${tempUI}    MainStep.Get Temperature For City    ${BELMOPAN}
+    MainStep.Verify API And UI Temperature    ${tempUI}
+    ...                                       ${tempViaApi}
 
     BuiltIn.Log Many    Step 2: Get weather via API in 'Fahrenheit' for city 'Belmopan'
     ${dict_with_temperature_measure_1}    CreateDict.Create Params Dictionary    q=${BELMOPAN}
     ...                                                                          appid=${APP_ID}
     ...                                                                          units=imperial
-    ${tempViaApi}    Api.Get Value For Specific JPath    ${JSON_PATH.temperature}
-    ...                                                  ${dict_with_temperature_measure_1}
+    ${tempViaApiInFahrenheit}    Api.Get Value For Specific JPath    ${JSON_PATH.temperature}
+    ...                                                              ${dict_with_temperature_measure_1}
 
-    BuiltIn.Log Many    Step 3: Change the temperature to 'Celsius'
+    BuiltIn.Log Many    Step 3: Change the temperature to 'Fahrenheit'
     ...                 ER 1: Verify the weather data matches the data from the back-end
+
+    MainStep.Select Measure    F
+    ${tempUI}    MainStep.Get Temperature For City    ${BELMOPAN}
+    MainStep.Verify API And UI Temperature    ${tempUI}
+    ...                                       ${tempViaApiInFahrenheit}
 
     [Teardown]    CommonStep.Delete Session
 
@@ -33,7 +41,8 @@ Precondition For Test 001
     LoginStep.Go To Sign In Page
     LoginStep.Login With Credentials    ${USER_CREDENTIALS.email}
     ...                                 ${USER_CREDENTIALS.password}
-    HomeStep.Verify Main Page Is Opened
+    MainStep.Go To Main Page
+    MainStep.Verify Main Page Is Opened
     ${dict_with_temperature_measure_1}    CreateDict.Create Params Dictionary    q=${BELMOPAN}
     ...                                                                          appid=${APP_ID}
     ...                                                                          units=metric
