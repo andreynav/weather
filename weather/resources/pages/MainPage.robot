@@ -14,6 +14,7 @@ ${SEPARATOR_1}                          °
 ${SEPARATOR_2}                          ,
 ${MAIN_METRIC_BUTTON_LOCATOR}           //div[contains(text(),"Metric")]
 ${MAIN_IMPERIAL_BUTTON_LOCATOR}         //div[contains(text(),"Imperial")]
+${MAIN_LOADER_LOCATOR}                  //div[@class='owm-loader']
 
 *** Keywords ***
 Go To Main Page
@@ -45,7 +46,7 @@ Get Search Temperature
     [Return]    ${parsedTemperature}
 
 Get Selected Measure
-    [Documentation]    TBC######################## нужно добавить проверку что кнопка выбрана
+    [Documentation]    Get the selected measure and return it
     [Arguments]    ${measure}
     SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_TEMPERATURE_RESULT_LOCATOR}
     ${temperature}    SeleniumLibrary.Get Text    locator=${MAIN_TEMPERATURE_RESULT_LOCATOR}
@@ -68,5 +69,7 @@ Click Measure Button
     ${locator}    BuiltIn.Set Variable If
     ...    '${measure}' == 'C'    ${MAIN_METRIC_BUTTON_LOCATOR}
     ...    '${measure}' == 'F'    ${MAIN_IMPERIAL_BUTTON_LOCATOR}
-    SeleniumLibrary.Wait Until Element Is Visible    locator=${locator}    timeout=10
+    Wait Until Keyword Succeeds  10 x    1 sec    SeleniumLibrary.Wait Until Element Is Not Visible    ${MAIN_LOADER_LOCATOR}
+    SeleniumLibrary.Wait Until Element Is Visible    locator=${locator}
     SeleniumLibrary.Click Element    locator=${locator}
+    Wait Until Keyword Succeeds  10 x    1 sec    SeleniumLibrary.Wait Until Element Is Not Visible    ${MAIN_LOADER_LOCATOR}

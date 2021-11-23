@@ -38,9 +38,7 @@ Verify API And UI Temperature
 Select Measure
     [Documentation]    User selects ${measure} button
     [Arguments]    ${measure}
-    BuiltIn.Sleep    5    ############# TBC #############
     MainPage.Click Measure Button    ${measure}
-    BuiltIn.Sleep    5    ############# TBC #############
     BuiltIn.Wait Until Keyword Succeeds    10 x    1 sec    MainStep.Verify Temperature Measure Is    ${measure}
 
 Verify Temperature Measure Is
