@@ -9,7 +9,7 @@ The project used the commonly used design patterns like Page object, Page elemen
 
 The project has multilayer structure: 
 - `framework` - used to keep custom libraries that can be reused in any other projects
-- `intro` - intro project for illustrating how we can use more than one project in repo 
+- `intro` - intro is project for illustrating how we can use more than one project in repo 
 - `output` - used to keep test reports 
 - `weather` - main project
   - `data` - used to keep variables 
