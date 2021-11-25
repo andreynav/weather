@@ -7,6 +7,6 @@ ${HOME_ARTICLE1_TITLE_LOCATOR}    //h2[contains(text(),'Historical weather for a
 ${HOME_ARTICLE1_TITLE_VALUE}      Historical weather for any location
 
 *** Keywords ***
-Go To Main Page
+Go To Home Page
     [Documentation]    User opens the Home page
     SeleniumLibrary.Go To    ${HOME_URL}

@@ -18,7 +18,7 @@ Change User Name
 
     BuiltIn.Log Many    Step 2: Go to home page
     ...                 ER 1: The user name is displayed at the navigation bar
-    HomeStep.Go To Main Page
+    HomeStep.Go To Home Page
     NavbarStep.Verify User Name    ${USER_NEXT_NAME}
 
     [Teardown]    Run Keywords    ProfileStep.Open User Settings Page

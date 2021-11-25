@@ -35,7 +35,7 @@ Login With Valid And Invalid Credentials
     ...                 ER 2: The user is authorized
     LoginStep.Login With Credentials    ${USER_CREDENTIALS.email}
     ...                                 ${USER_CREDENTIALS.password}
-    HomeStep.Verify Main Page Is Opened
+    HomeStep.Verify Home Page Is Opened
     CommonStep.Verify Alert Is Displayed    ${ALERT_SIGNEDIN_VALUE}
     NavbarStep.Verify User Name    ${USER_CURRENT_NAME}
 
