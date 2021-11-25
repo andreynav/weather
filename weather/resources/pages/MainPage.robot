@@ -7,7 +7,7 @@ ${MAIN_TITLE_LOCATOR}                   //h1/span
 ${MAIN_TITLE_VALUE}                     OpenWeather
 ${MAIN_SEARCH_LOCATOR}                  //input[@placeholder='Search city']
 ${MAIN_SEARCH_BUTTON_LOCATOR}           //button[text()='Search']
-${MAIN_DROPDOWN_FIRST_ITEM_LOCATOR}     //div[@class='search-container']/ul/li
+${MAIN_DROPDOWN_ITEM_LOCATOR}           //div[@class='search-container']/ul/li
 ${MAIN_TEMPERATURE_CITY_LOCATOR}        //div[@class='section-content']//h2
 ${MAIN_TEMPERATURE_RESULT_LOCATOR}      //span[@class='heading']
 ${SEPARATOR_1}                          °
@@ -35,8 +35,8 @@ Click Search Button
 
 Select Item From Dropdown
     [Documentation]    User selects the item from the dropdown list
-    SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_DROPDOWN_FIRST_ITEM_LOCATOR}
-    SeleniumLibrary.Click Element    locator=${MAIN_DROPDOWN_FIRST_ITEM_LOCATOR}
+    SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_DROPDOWN_ITEM_LOCATOR}
+    SeleniumLibrary.Click Element    locator=${MAIN_DROPDOWN_ITEM_LOCATOR}
 
 Get Search Temperature
     [Documentation]    Get the search temperature result
