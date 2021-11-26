@@ -69,7 +69,7 @@ Click Measure Button
     ${locator}    BuiltIn.Set Variable If
     ...    '${measure}' == 'C'    ${MAIN_METRIC_BUTTON_LOCATOR}
     ...    '${measure}' == 'F'    ${MAIN_IMPERIAL_BUTTON_LOCATOR}
-    Wait Until Keyword Succeeds  10 x    1 sec    SeleniumLibrary.Wait Until Element Is Not Visible    ${MAIN_LOADER_LOCATOR}
+    SeleniumLibrary.Wait Until Element Is Not Visible    ${MAIN_LOADER_LOCATOR}
     SeleniumLibrary.Wait Until Element Is Visible    locator=${locator}
     SeleniumLibrary.Click Element    locator=${locator}
-    Wait Until Keyword Succeeds  10 x    1 sec    SeleniumLibrary.Wait Until Element Is Not Visible    ${MAIN_LOADER_LOCATOR}
+    SeleniumLibrary.Wait Until Element Is Not Visible    ${MAIN_LOADER_LOCATOR}
