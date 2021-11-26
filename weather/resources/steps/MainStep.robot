@@ -22,7 +22,7 @@ Enter Value To Search City
 Get Temperature For City
     [Documentation]    User temperature value for selected city
     [Arguments]    ${cityName}
-    BuiltIn.Wait Until Keyword Succeeds    10 x    1 sec    MainPage.Get Selected City    ${cityName}
+    BuiltIn.Wait Until Keyword Succeeds    10 x    1 sec    MainPage.Verify Selected City Is    ${cityName}
     ${tempUI}    MainPage.Get Search Temperature
     [Return]    ${tempUI}
 

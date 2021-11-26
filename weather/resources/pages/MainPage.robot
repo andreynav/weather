@@ -52,7 +52,7 @@ Get Result Temperature Measure
     ${parsedMeasure}    String.Split String    string=${temperature}    separator=${SEPARATOR_1}
     [Return]    ${parsedMeasure}[1]
 
-Get Selected City
+Verify Selected City Is
     [Documentation]    Get the search temperature result if city is ${city}
     [Arguments]    ${city}
     SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_TEMPERATURE_CITY_LOCATOR}
