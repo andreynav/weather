@@ -47,7 +47,6 @@ Get Search Temperature
 
 Get Selected Measure
     [Documentation]    Get the selected measure and return it
-    [Arguments]    ${measure}
     SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_TEMPERATURE_RESULT_LOCATOR}
     ${temperature}    SeleniumLibrary.Get Text    locator=${MAIN_TEMPERATURE_RESULT_LOCATOR}
     ${parsedMeasure}    String.Split String    string=${temperature}    separator=${SEPARATOR_1}
