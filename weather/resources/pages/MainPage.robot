@@ -45,7 +45,7 @@ Get Search Temperature
     ${parsedTemperature}    String.Split String    string=${temperature}    separator=${SEPARATOR_1}
     [Return]    ${parsedTemperature}[0]
 
-Get Selected Measure
+Get Result Temperature Measure
     [Documentation]    Get the selected measure and return it
     SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_TEMPERATURE_RESULT_LOCATOR}
     ${temperature}    SeleniumLibrary.Get Text    locator=${MAIN_TEMPERATURE_RESULT_LOCATOR}

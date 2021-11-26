@@ -44,7 +44,7 @@ Select Measure
 Verify Temperature Measure Is
     [Documentation]    Verify the selected temperature measure
     [Arguments]    ${measure}
-    ${parsedMeasure}    BuiltIn.Wait Until Keyword Succeeds    10 x    1 sec    MainPage.Get Selected Measure
+    ${parsedMeasure}    BuiltIn.Wait Until Keyword Succeeds    10 x    1 sec    MainPage.Get Result Temperature Measure
     BuiltIn.Should Be Equal As Strings    ${parsedMeasure}
     ...                                   ${measure}
     ...                                   The measure is wrong
