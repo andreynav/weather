@@ -8,3 +8,4 @@ Library         Collections
 Library         JSONLibrary
 Library         RequestsLibrary
 Library         SeleniumLibrary
+Library         String
