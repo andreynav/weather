@@ -1,5 +1,5 @@
 *** Settings ***
-Resource          ../../import.resource
+Resource          ../../../import.resource
 Suite Setup       CommonStep.Open Browser And Maximaze
 Suite Teardown    CommonStep.Close Browser
 

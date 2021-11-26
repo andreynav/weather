@@ -1,5 +1,5 @@
 *** Settings ***
-Resource          ../../import.resource
+Resource          ../../../import.resource
 
 *** Test Cases ***
 Get Weather Via Api By Name And Cord And Id
