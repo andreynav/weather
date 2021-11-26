@@ -12,11 +12,10 @@ def get_random_item_from_list(list_items: list, except_item: Optional[str] = Non
     :return: a random item from current list
     :raises ValueError: thrown if the current parameters are unknown
     """
-    try:
-        if except_item is None:
-            return random.choice(list_items)
-        if except_item in list_items:
-            list_items.remove(except_item)
-            return random.choice(list_items)
-    except ValueError:
-        print("The current parameters are unknown")
+    if except_item is None:
+        return random.choice(list_items)
+    elif except_item in list_items:
+        list_items.remove(except_item)
+        return random.choice(list_items)
+    else:
+        raise ValueError("The current combination of args isn't allowed")

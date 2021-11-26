@@ -14,19 +14,18 @@ def converting_measure_temperature_one_to_measure_temperature_two(temperature: f
     """
     kelvin_zero = 273.15
     converted_value = None
-    try:
-        if current_measure == "standard" and expected_measure == "metric":
-            converted_value = round(temperature - kelvin_zero, 2)
-        if current_measure == "standard" and expected_measure == "imperial":
-            converted_value = round(((temperature - kelvin_zero) * 9/5 + 32), 2)
-        if current_measure == "metric" and expected_measure == "standard":
-            converted_value = round(temperature + kelvin_zero, 2)
-        if current_measure == "metric" and expected_measure == "imperial":
-            converted_value = round(temperature * 9/5 + 32, 2)
-        if current_measure == "imperial" and expected_measure == "standard":
-            converted_value = round(((temperature - 32) * 5/9) + 273.15, 2)
-        if current_measure == "imperial" and expected_measure == "metric":
-            converted_value = round(((temperature - 32) * 5/9), 2)
-    except ValueError:
-        print("The current combination doesn't allowed")
+    if current_measure == "standard" and expected_measure == "metric":
+        converted_value = round(temperature - kelvin_zero, 2)
+    elif current_measure == "standard" and expected_measure == "imperial":
+        converted_value = round(((temperature - kelvin_zero) * 9 / 5 + 32), 2)
+    elif current_measure == "metric" and expected_measure == "standard":
+        converted_value = round(temperature + kelvin_zero, 2)
+    elif current_measure == "metric" and expected_measure == "imperial":
+        converted_value = round(temperature * 9 / 5 + 32, 2)
+    elif current_measure == "imperial" and expected_measure == "standard":
+        converted_value = round(((temperature - 32) * 5 / 9) + 273.15, 2)
+    elif current_measure == "imperial" and expected_measure == "metric":
+        converted_value = round(((temperature - 32) * 5 / 9), 2)
+    else:
+        raise ValueError("The current combination of args isn't allowed")
     return converted_value
