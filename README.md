@@ -9,7 +9,7 @@ The project used the commonly used design patterns like Page object, Page elemen
 
 The project has multilayer structure: 
 - `framework` - used to keep custom libraries that can be reused in any other projects
-- `intro` - intro is project for illustrating how we can use more than one project in repo 
+- `sample` - sample is project for illustrating how we can use more than one project in repo 
 - `output` - used to keep test reports 
 - `weather` - main project
   - `data` - used to keep variables 
@@ -20,7 +20,7 @@ The project has multilayer structure:
 ```
 .
 ├── framework
-├── intro
+├── sample
 │   ├── resources
 │   └── tests
 ├── output
@@ -35,7 +35,7 @@ The project has multilayer structure:
 ```
 ## Scheme of project interactions
 
-TThe project interactions between layers is displayed on the next scheme:
+The project interactions between layers is displayed on the next scheme:
 
 ![scheme](scheme.png?raw=true)
 
