@@ -19,6 +19,11 @@ ${MAIN_LOADER_LOCATOR}                  //div[@class='owm-loader']
 Go To Main Page
     [Documentation]    User opens the Main page
     SeleniumLibrary.Go To    ${MAIN_URL}
+    MainPage.Wait Main Page Is Loaded
+
+Wait Main Page Is Loaded
+    [Documentation]    Wait until the main page is loaded to manipulate the DOM elements
+    SeleniumLibrary.Wait Until Element Is Not Visible    ${MAIN_LOADER_LOCATOR}
 
 Input Search Value
     [Documentation]    User inputs the searching value
@@ -75,7 +80,7 @@ Click Measure Button
     ${locator}    BuiltIn.Set Variable If
     ...    '${measure}' == 'C'    ${MAIN_METRIC_BUTTON_LOCATOR}
     ...    '${measure}' == 'F'    ${MAIN_IMPERIAL_BUTTON_LOCATOR}
-    SeleniumLibrary.Wait Until Element Is Not Visible    ${MAIN_LOADER_LOCATOR}
+    MainPage.Wait Main Page Is Loaded
     SeleniumLibrary.Wait Until Element Is Visible    locator=${locator}
     SeleniumLibrary.Click Element    locator=${locator}
-    SeleniumLibrary.Wait Until Element Is Not Visible    ${MAIN_LOADER_LOCATOR}
+    MainPage.Wait Main Page Is Loaded
