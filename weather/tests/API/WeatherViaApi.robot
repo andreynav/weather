@@ -45,7 +45,7 @@ Get City Temperature Via Units And Verify Measure
     ...                                                                          units=${units}
     ${temperature_1}    Api.Get Value For Specific JPath    ${json_path}
     ...                                                     ${dict_with_temperature_measure_1}
-    ${measure_temperature_2}    Api.Get Random Measure Except    ${dict_with_temperature_measure_1}[units]
+    ${measure_temperature_2}    Common.Get Random Measure Except    ${dict_with_temperature_measure_1}[units]
     ${dict_with_temperature_measure_2}    CreateDict.Create Params Dictionary    q=${q}
     ...                                                                          appid=${appid}
     ...                                                                          units=${measure_temperature_2}
