@@ -11,4 +11,5 @@ Resource        steps/MainStep.robot
 Resource        steps/NavbarStep.robot
 Resource        steps/ProfileStep.robot
 Resource        Common.robot
-Resource        api/Api.robot
+Resource        api/steps/Api.robot
+Resource        api/endpoints/Weather.robot

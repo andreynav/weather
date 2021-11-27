@@ -1,14 +1,12 @@
 *** Settings ***
-Resource    ../../../import.resource
+Resource    ../../../../import.resource
 
 *** Keywords ***
 Get Value For Specific JPath
     [Documentation]    Get value of specific parameter for a city
     [Arguments]    ${json_path}
     ...            ${params}
-    ${response}    RequestsLibrary.GET    ${API_ENDPOINT_WEATHER}
-    ...                                   ${params}
-    RequestsLibrary.Status Should Be    ${CODE_SUCCESS}
+    ${response}    weather.Get Weather Data From Api    ${params}
     ${temperature}    JSONLibrary.Get Value From Json    ${response.json()}
     ...                                                  ${json_path}
     [Return]    ${temperature[0]}
