@@ -2,7 +2,6 @@
 Resource    ../../../import.resource
 
 *** Variables ***
-${MAIN_URL}                             https://openweathermap.org/
 ${MAIN_TITLE_LOCATOR}                   //h1/span
 ${MAIN_TITLE_VALUE}                     OpenWeather
 ${MAIN_SEARCH_LOCATOR}                  //input[@placeholder='Search city']
@@ -18,7 +17,7 @@ ${MAIN_LOADER_LOCATOR}                  //div[@class='owm-loader']
 *** Keywords ***
 Go To Main Page
     [Documentation]    User opens the Main page
-    SeleniumLibrary.Go To    ${MAIN_URL}
+    SeleniumLibrary.Go To    ${URL_MAIN}
     MainPage.Wait Main Page Is Loaded
 
 Wait Main Page Is Loaded

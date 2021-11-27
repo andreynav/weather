@@ -2,7 +2,6 @@
 Resource    ../../import.resource
 
 *** Variables ***
-${BASE_URL}               openweathermap.org
 ${ALERT_TITLE_LOCATOR}    //div[@class='panel-heading']
 ${ALERT_TEXT_LOCATOR}     //div[@class='panel-heading']/following-sibling::div
 

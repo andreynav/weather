@@ -6,7 +6,7 @@ Get Value For Specific JPath
     [Documentation]    Get value of specific parameter for a city
     [Arguments]    ${json_path}
     ...            ${params}
-    ${response}    RequestsLibrary.GET    ${API_URL}
+    ${response}    RequestsLibrary.GET    ${API_ENDPOINT_WEATHER}
     ...                                   ${params}
     RequestsLibrary.Status Should Be    ${CODE_SUCCESS}
     ${temperature}    JSONLibrary.Get Value From Json    ${response.json()}

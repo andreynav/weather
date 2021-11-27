@@ -5,13 +5,12 @@ Resource    ../../../import.resource
 ${PROFILE_USER_SETTINGS_ITEM_MENU_LOCATOR}    //ul[contains(@class,"nav-pills")]//a[@href='/home']
 ${PROFILE_USER_SETTINGS_ITEM_MENU_VALUE}      User settings
 ${PROFILE_USERNAME_FIELD_LOCATOR}             //input[@id='profile_form_username']
-${PROFILE_URL}                                https://home.openweathermap.org/home
 ${PROFILE_BUTTON_LOCATOR}                     //input[@value='Save']
 
 *** Keywords ***
 Open User Settings Page
     [Documentation]    User opens the User Settings page
-    SeleniumLibrary.Go To   ${PROFILE_URL}
+    SeleniumLibrary.Go To   ${URL_PROFILE}
 
 Input Username
     [Documentation]    User inputs a name
