@@ -22,7 +22,7 @@ Go To Main Page
 
 Wait Main Page Is Loaded
     [Documentation]    Wait until the main page is loaded to manipulate the DOM elements
-    SeleniumLibrary.Wait Until Element Is Not Visible    ${MAIN_LOADER_LOCATOR}
+    SeleniumLibrary.Wait Until Element Is Not Visible    locator=${MAIN_LOADER_LOCATOR}    timeout=15
 
 Input Search Value
     [Documentation]    User inputs the searching value
