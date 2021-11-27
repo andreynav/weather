@@ -7,7 +7,6 @@ ${MAIN_TITLE_LOCATOR}                   //h1/span
 ${MAIN_TITLE_VALUE}                     OpenWeather
 ${MAIN_SEARCH_LOCATOR}                  //input[@placeholder='Search city']
 ${MAIN_SEARCH_BUTTON_LOCATOR}           //button[text()='Search']
-${MAIN_DROPDOWN_ITEM_LOCATOR}           //div[@class='search-container']/ul/li
 ${MAIN_TEMPERATURE_CITY_LOCATOR}        //div[@class='section-content']//h2
 ${MAIN_TEMPERATURE_RESULT_LOCATOR}      //span[@class='heading']
 ${SEPARATOR_1}                          °
@@ -33,10 +32,18 @@ Click Search Button
     SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_SEARCH_BUTTON_LOCATOR}
     SeleniumLibrary.Click Element    locator=${MAIN_SEARCH_BUTTON_LOCATOR}
 
-Select Item From Dropdown
-    [Documentation]    User selects the item from the dropdown list
-    SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_DROPDOWN_ITEM_LOCATOR}
-    SeleniumLibrary.Click Element    locator=${MAIN_DROPDOWN_ITEM_LOCATOR}
+Select Item From Dropdown By City Name
+    [Documentation]    User selects the first result which match the ${item} in the dropdown list
+    [Arguments]    ${cityName}
+    ${locator}    MainPage.Get First Item Locator From Dropdown By City Name    ${cityName}
+    SeleniumLibrary.Wait Until Element Is Visible    locator=${locator}
+    SeleniumLibrary.Click Element    locator=${locator}
+
+Get First Item Locator From Dropdown By City Name
+    [Documentation]    Get the locator for city name in the dropdown list
+    [Arguments]    ${cityName}
+    ${locator}    BuiltIn.Set Variable    //div[@class="search-container"]/ul/li/span[contains(text(),"${cityName}")]
+    [Return]    ${locator}
 
 Get Search Temperature
     [Documentation]    Get the search temperature result

@@ -17,7 +17,7 @@ Enter Value To Search City
     [Arguments]    ${cityName}
     MainPage.Input Search Value    ${cityName}
     MainPage.Click Search Button
-    MainPage.Select Item From Dropdown
+    MainPage.Select Item From Dropdown By City Name    ${cityName}
 
 Get Temperature For City
     [Documentation]    User temperature value for selected city
