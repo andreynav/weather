@@ -9,29 +9,42 @@ The project used the commonly used design patterns like Page object, Page elemen
 
 The project has multilayer structure: 
 - `framework` - used to keep custom libraries that can be reused in any other projects
-- `sample` - sample is project for illustrating how we can use more than one project in repo 
 - `output` - used to keep test reports 
+- `sample` - sample is project for illustrating how we can use more than one project in repo 
+  - `resources` - used to keep keywords that can be used only in current projects
+  - `tests` - contains tests 
 - `weather` - main project
   - `data` - used to keep variables 
   - `lib` - used to keep specific libraries
   - `resources` - used to keep keywords that can be used only in current projects
+    - `api` -  used to keep keywords for API calls
+    - `pages` - used to keep keywords related to specific pages
+    - `steps` - used to keep keywords related actions which used in tests
   - `tests` - contains tests
+    - `API` - which runs via API
+    - `E2E` - which runs via API and UI both
+    - `UI` - which runs via UI
 
 ```
 .
 ├── framework
+├── output
 ├── sample
 │   ├── resources
 │   └── tests
-├── output
 └── weather
     ├── data
     ├── lib
     ├── resources
     │   ├── api
+    │   │   ├── endpoints
+    │   │   └── steps
     │   ├── pages
     │   └── steps
     └── tests
+        ├── API
+        ├── E2E
+        ├── UI
 ```
 ## Scheme of project interactions
 
