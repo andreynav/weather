@@ -38,12 +38,14 @@ Verify API And UI Temperature
 Select Measure
     [Documentation]    User selects ${measure} button
     [Arguments]    ${measure}
+    MainPage.Wait Main Page Is Loaded
     MainPage.Click Measure Button    ${measure}
     BuiltIn.Wait Until Keyword Succeeds    10 x    1 sec    MainStep.Verify Temperature Measure Is    ${measure}
 
 Verify Temperature Measure Is
     [Documentation]    Verify the selected temperature measure
     [Arguments]    ${measure}
+    MainPage.Wait Main Page Is Loaded
     ${parsedMeasure}    BuiltIn.Wait Until Keyword Succeeds    10 x    1 sec    MainPage.Get Result Temperature Measure
     BuiltIn.Should Be Equal As Strings    ${parsedMeasure}
     ...                                   ${measure}

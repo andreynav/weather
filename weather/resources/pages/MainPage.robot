@@ -79,7 +79,5 @@ Click Measure Button
     ${locator}    BuiltIn.Set Variable If
     ...    '${measure}' == 'C'    ${MAIN_METRIC_BUTTON_LOCATOR}
     ...    '${measure}' == 'F'    ${MAIN_IMPERIAL_BUTTON_LOCATOR}
-    MainPage.Wait Main Page Is Loaded
     SeleniumLibrary.Wait Until Element Is Visible    locator=${locator}
     SeleniumLibrary.Click Element    locator=${locator}
-    MainPage.Wait Main Page Is Loaded
