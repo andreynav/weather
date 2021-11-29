@@ -2,7 +2,7 @@
 Resource    ../../../../import.resource
 
 *** Keywords ***
-Get Value For Specific JPath
+Get Temperature From Weather Api
     [Documentation]    Get value of specific parameter for a city
     [Arguments]    ${json_path}
     ...            ${params}

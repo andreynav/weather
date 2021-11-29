@@ -22,7 +22,7 @@ Get Weather For City And Compare UI And API Data
     ${dict_with_temperature_measure_1}    CreateDict.Create Params Dictionary    q=${BELMOPAN}
     ...                                                                          appid=${APP_ID}
     ...                                                                          units=imperial
-    ${tempViaApiInFahrenheit}    Api.Get Value For Specific JPath    ${JSON_PATH.temperature}
+    ${tempViaApiInFahrenheit}    Api.Get Temperature From Weather Api    ${JSON_PATH.temperature}
     ...                                                              ${dict_with_temperature_measure_1}
 
     BuiltIn.Log Many    Step 3: Change the temperature to 'Fahrenheit'
@@ -46,6 +46,6 @@ Precondition For Test 001
     ${dict_with_temperature_measure_1}    CreateDict.Create Params Dictionary    q=${BELMOPAN}
     ...                                                                          appid=${APP_ID}
     ...                                                                          units=metric
-    ${tempViaApi}    Api.Get Value For Specific JPath    ${JSON_PATH.temperature}
+    ${tempViaApi}    Api.Get Temperature From Weather Api    ${JSON_PATH.temperature}
     ...                                                  ${dict_with_temperature_measure_1}
     Set Test Variable    ${tempViaApi}
