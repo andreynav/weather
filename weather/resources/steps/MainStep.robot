@@ -22,7 +22,7 @@ Enter Value To Search City
 Get Temperature For City
     [Documentation]    User temperature value for selected city
     [Arguments]    ${cityName}
-    BuiltIn.Wait Until Keyword Succeeds    10 x    1 sec    MainPage.Verify Selected City Is    ${cityName}
+    BuiltIn.Wait Until Keyword Succeeds    3x    3sec    MainPage.Verify Selected City Is    ${cityName}
     ${tempUI}    MainPage.Get Search Temperature
     [Return]    ${tempUI}
 
@@ -40,13 +40,13 @@ Select Measure
     [Arguments]    ${measure}
     MainPage.Wait Main Page Is Loaded
     MainPage.Click Measure Button    ${measure}
-    BuiltIn.Wait Until Keyword Succeeds    10 x    1 sec    MainStep.Verify Temperature Measure Is    ${measure}
+    BuiltIn.Wait Until Keyword Succeeds    3x    3sec    MainStep.Verify Temperature Measure Is    ${measure}
 
 Verify Temperature Measure Is
     [Documentation]    Verify the selected temperature measure
     [Arguments]    ${measure}
     MainPage.Wait Main Page Is Loaded
-    ${parsedMeasure}    BuiltIn.Wait Until Keyword Succeeds    10 x    1 sec    MainPage.Get Result Temperature Measure
+    ${parsedMeasure}    BuiltIn.Wait Until Keyword Succeeds    3x    3sec    MainPage.Get Result Temperature Measure
     BuiltIn.Should Be Equal As Strings    ${parsedMeasure}
     ...                                   ${measure}
     ...                                   The measure is wrong
