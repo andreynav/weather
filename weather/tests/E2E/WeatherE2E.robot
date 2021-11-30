@@ -13,7 +13,7 @@ Get Weather For City And Compare UI And API Data
     ...                 ER 1: Verify the weather data matches the data from the back-end    #add select matric mesure
 
     MainStep.Select Measure    C
-    MainStep.Enter Value To Search City    ${BELMOPAN}
+    MainStep.Search City By Name    ${BELMOPAN}
     ${tempUI}    MainStep.Get Temperature For City    ${BELMOPAN}
     MainStep.Verify API And UI Temperature    ${tempUI}
     ...                                       ${tempViaApi}

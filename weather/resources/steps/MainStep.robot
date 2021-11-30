@@ -12,7 +12,7 @@ Verify Main Page Is Opened
     CommonStep.Verify Unique Page Element    locator=${MAIN_TITLE_LOCATOR}
     ...                                      value=${MAIN_TITLE_VALUE}
 
-Enter Value To Search City
+Search City By Name
     [Documentation]    User enters specific value to the search field
     [Arguments]    ${cityName}
     MainPage.Input Search Value    ${cityName}
@@ -38,14 +38,12 @@ Verify API And UI Temperature
 Select Measure
     [Documentation]    User selects ${measure} button
     [Arguments]    ${measure}
-    MainPage.Wait Main Page Is Loaded
     MainPage.Click Measure Button    ${measure}
     BuiltIn.Wait Until Keyword Succeeds    3x    3sec    MainStep.Verify Temperature Measure Is    ${measure}
 
 Verify Temperature Measure Is
     [Documentation]    Verify the selected temperature measure
     [Arguments]    ${measure}
-    MainPage.Wait Main Page Is Loaded
     ${parsedMeasure}    BuiltIn.Wait Until Keyword Succeeds    3x    3sec    MainPage.Get Result Temperature Measure
     BuiltIn.Should Be Equal As Strings    ${parsedMeasure}
     ...                                   ${measure}

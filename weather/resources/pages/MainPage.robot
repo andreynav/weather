@@ -81,3 +81,4 @@ Click Measure Button
     ...    '${measure}' == 'F'    ${MAIN_IMPERIAL_BUTTON_LOCATOR}
     SeleniumLibrary.Wait Until Element Is Visible    locator=${locator}
     SeleniumLibrary.Click Element    locator=${locator}
+    MainPage.Wait Main Page Is Loaded
