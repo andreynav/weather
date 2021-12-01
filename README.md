@@ -8,35 +8,56 @@ The project used the commonly used design patterns like Page object, Page elemen
 ## Project structure
 
 The project has multilayer structure: 
-- `env` - used to keep a virtual environment (can be kept in another place)
-- `framework` - used to keep variables, specific libraries and keywords that can be used only in current projects
-- `lib` - used to keep custom libraries that can be reused in any other projects
+- `framework` - used to keep custom libraries that can be reused in any other projects
 - `output` - used to keep test reports 
-- `tests` - contains test
+- `sample` - sample is project for illustrating how we can use more than one project in repo 
+  - `resources` - used to keep keywords that can be used only in current projects
+  - `tests` - contains tests 
+- `weather` - main project
+  - `data` - used to keep variables 
+  - `lib` - used to keep specific libraries
+  - `resources` - used to keep keywords that can be used only in current projects
+    - `api` -  used to keep keywords for API calls
+    - `pages` - used to keep keywords related to specific pages
+    - `steps` - used to keep keywords related actions which used in tests
+  - `tests` - contains tests
+    - `API` - which runs via API
+    - `E2E` - which runs via API and UI both
+    - `UI` - which runs via UI
 
 ```
 .
-├── env
-│   ├── bin
-│   └── lib
-│       └── python3.9
 ├── framework
-│   ├── data
-│   └── lib
-│   └── resources
-│       ├── homework
-│       └── weather
-│           ├── api
-│           ├── pages
-│           └── steps
-├── lib
 ├── output
-└── tests
-    ├── homework
-    └── weather
+├── sample
+│   ├── resources
+│   └── tests
+└── weather
+    ├── data
+    ├── lib
+    ├── resources
+    │   ├── api
+    │   │   ├── endpoints
+    │   │   └── steps
+    │   ├── pages
+    │   └── steps
+    └── tests
+        ├── API
+        ├── E2E
+        ├── UI
 ```
+## Scheme of project interactions
 
-  
+The project interactions between layers is displayed on the next scheme:
+
+![scheme](scheme.png?raw=true)
+
+The TESTS layer can interact with the DATA, PAGES (API), and STEPS layers. The gray arrow from STEPS to ROBOT LIBS means that the Log keyword of the robot framework can be used for logging. Any other direct interaction with ROBOT LIBS from STEPS is limited. 
+
+The STEPS layer can interact with the PAGES (API) and ROBOT LIBS layers.
+
+The PAGES layer includes sublayers PAGES (an entity of Page object pattern) and API sublayer. Can interact with FRAMEWORK, ROBOT LIBS, LIB, and DATA layers.
+ 
 ## Dependencies
 
 The project has the next dependencies in the [requirements](requirements.txt) file
