@@ -10,3 +10,9 @@ Verify User Name
     ...                        ${name}
     ...                        The name does not equal exisitng
 
+User Logout Site
+     [Documentation]    User log out the site
+     Navbar.Click Logout Item
+     LoginStep.Verify Sign In Page Is Opened    #
+
+
