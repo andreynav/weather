@@ -31,3 +31,11 @@ Verify Unique Page Element
     ...                        ${value}
     ...                        The value does not equal required
 
+Begin Test Case
+    [Documentation]    Login to the app and to be at the Main page
+    LoginStep.Go To Sign In Page
+    LoginStep.Login With Credentials    ${USER_CREDENTIALS.email}
+    ...                                 ${USER_CREDENTIALS.password}
+    MainStep.Go To Main Page
+    MainStep.Verify Main Page Is Opened
+
