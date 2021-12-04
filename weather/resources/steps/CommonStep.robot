@@ -39,3 +39,12 @@ Begin Test Case
     MainStep.Go To Main Page
     MainStep.Verify Main Page Is Opened
 
+Verify Date Is Current
+    [Documentation]    # TODO:
+    [Arguments]    ${date_format}
+    ${parsedDate}    CustomDatetime.Get Current Date    date_format=${date_format}
+    ${parsedDateUI}    MainPage.Get Result City Datetime
+    BuiltIn.Should Be Equal As Strings    ${parsedDateUI}
+    ...                                   ${parsedDate}
+    ...                                   The date is wrong
+

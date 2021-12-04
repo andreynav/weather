@@ -2,17 +2,23 @@
 Resource    ../../../import.resource
 
 *** Variables ***
-${MAIN_TITLE_LOCATOR}                   //h1/span
-${MAIN_TITLE_VALUE}                     OpenWeather
-${MAIN_SEARCH_LOCATOR}                  //input[@placeholder='Search city']
-${MAIN_SEARCH_BUTTON_LOCATOR}           //button[text()='Search']
-${MAIN_TEMPERATURE_CITY_LOCATOR}        //div[@class='section-content']//h2
-${MAIN_TEMPERATURE_RESULT_LOCATOR}      //span[@class='heading']
-${SEPARATOR_1}                          °
-${SEPARATOR_2}                          ,
-${MAIN_METRIC_BUTTON_LOCATOR}           //div[contains(text(),"Metric")]
-${MAIN_IMPERIAL_BUTTON_LOCATOR}         //div[contains(text(),"Imperial")]
-${MAIN_LOADER_LOCATOR}                  //div[@class='owm-loader']
+${MAIN_TITLE_LOCATOR}                       //h1/span
+${MAIN_TITLE_VALUE}                         OpenWeather
+${MAIN_SEARCH_LOCATOR}                      //input[@placeholder='Search city']
+${MAIN_SEARCH_BUTTON_LOCATOR}               //button[text()='Search']
+${MAIN_TEMPERATURE_CITY_LOCATOR}            //div[@class='section-content']//h2
+${MAIN_DATETIME_CITY_LOCATOR}               //div[@class='section-content']//span[@class='orange-text']
+${MAIN_TEMPERATURE_RESULT_LOCATOR}          //span[@class='heading']
+${SEPARATOR_1}                              °
+${SEPARATOR_2}                              ,
+${MAIN_METRIC_BUTTON_LOCATOR}               //div[contains(text(),"Metric")]
+${MAIN_IMPERIAL_BUTTON_LOCATOR}             //div[contains(text(),"Imperial")]
+${MAIN_LOADER_LOCATOR}                      //div[@class='owm-loader']
+${CITY_DATE_FORMAT}                         %b %-d
+${MAIN_8DAY_FORECAST_DFORMAT}               %a, %b %d
+${MAIN_8DAY_FORECAST_LISTDATES_LOCATOR}     //ul[@class='day-list']/li/span
+${MAIN_8DAY_FORECAST_LISTTEMPS_LOCATOR}     //div[@class='day-list-values']/div/span
+${MAIN_8DAY_FORECAST_LISTDESCR_LOCATOR}     //span[@class='sub']
 
 *** Keywords ***
 Go To Main Page
@@ -22,7 +28,8 @@ Go To Main Page
 
 Wait Main Page Is Loaded
     [Documentation]    Wait until the main page is loaded to manipulate the DOM elements
-    SeleniumLibrary.Wait Until Element Is Not Visible    locator=${MAIN_LOADER_LOCATOR}    timeout=15
+    SeleniumLibrary.Wait Until Element Is Not Visible    locator=${MAIN_LOADER_LOCATOR}
+    ...                                                  timeout=15
 
 Input Search Value
     [Documentation]    User inputs the searching value
@@ -38,29 +45,31 @@ Click Search Button
 
 Select Item From Dropdown By City Name
     [Documentation]    User selects the first result which match the ${item} in the dropdown list
-    [Arguments]    ${cityName}
-    ${locator}    MainPage.Get First Item Locator From Dropdown By City Name    ${cityName}
+    [Arguments]    ${city_name}
+    ${locator}    MainPage.Get First Item Locator From Dropdown By City Name    ${city_name}
     SeleniumLibrary.Wait Until Element Is Visible    locator=${locator}
     SeleniumLibrary.Click Element    locator=${locator}
 
 Get First Item Locator From Dropdown By City Name
     [Documentation]    Get the locator for city name in the dropdown list
-    [Arguments]    ${cityName}
-    ${locator}    BuiltIn.Set Variable    //div[@class="search-container"]/ul/li/span[contains(text(),"${cityName}")]
+    [Arguments]    ${city_name}
+    ${locator}    BuiltIn.Set Variable    //div[@class="search-container"]/ul/li/span[contains(text(),"${city_name}")]
     [Return]    ${locator}
 
 Get Search Temperature
     [Documentation]    Get the search temperature result
     SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_TEMPERATURE_RESULT_LOCATOR}
     ${temperature}    SeleniumLibrary.Get Text    locator=${MAIN_TEMPERATURE_RESULT_LOCATOR}
-    ${parsedTemperature}    String.Split String    string=${temperature}    separator=${SEPARATOR_1}
+    ${parsedTemperature}    String.Split String    string=${temperature}
+    ...                                            separator=${SEPARATOR_1}
     [Return]    ${parsedTemperature}[0]
 
 Get Result Temperature Measure
     [Documentation]    Get the selected measure and return it
     SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_TEMPERATURE_RESULT_LOCATOR}
     ${temperature}    SeleniumLibrary.Get Text    locator=${MAIN_TEMPERATURE_RESULT_LOCATOR}
-    ${parsedMeasure}    String.Split String    string=${temperature}    separator=${SEPARATOR_1}
+    ${parsedMeasure}    String.Split String    string=${temperature}
+    ...                                        separator=${SEPARATOR_1}
     [Return]    ${parsedMeasure}[1]
 
 Verify Selected City Is
@@ -68,8 +77,9 @@ Verify Selected City Is
     [Arguments]    ${city}
     SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_TEMPERATURE_CITY_LOCATOR}
     ${selectedCity}    SeleniumLibrary.Get Text    locator=${MAIN_TEMPERATURE_CITY_LOCATOR}
-    ${parsedSelectedCity}    String.Split String    string=${selectedCity}    separator=${SEPARATOR_2}
-    BuiltIn.Should Be Equal As Strings    ${parsedSelectedCity}[0]
+    #${parsedSelectedCity}    String.Split String    string=${selectedCity}    separator=${SEPARATOR_2}
+    #BuiltIn.Should Be Equal As Strings    ${parsedSelectedCity}[0]
+    BuiltIn.Should Be Equal As Strings    ${selectedCity}
     ...                                   ${city}
     ...                                   The city is wrong
 
@@ -82,3 +92,26 @@ Click Measure Button
     SeleniumLibrary.Wait Until Element Is Visible    locator=${locator}
     SeleniumLibrary.Click Element    locator=${locator}
     MainPage.Wait Main Page Is Loaded
+
+Get Result City Datetime
+    [Documentation]    #TODO:
+    SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_DATETIME_CITY_LOCATOR}
+    ${date}    SeleniumLibrary.Get Text    locator=${MAIN_DATETIME_CITY_LOCATOR}
+    ${parsedDate}    String.Split String    string=${date}
+    ...                                     separator=${SEPARATOR_2}
+    [Return]    ${parsedDate}[0]
+
+Get List Of Forecast Items
+    [Documentation]    #TODO:
+    [Arguments]    ${locator}
+    SeleniumLibrary.Wait Until Element Is Visible    locator=${locator}
+    SeleniumLibrary.Get Element Count    locator=${locator}
+    #@{list}    CustomSelenium.Get All Text From Element    locator=${locator}    #WTF?????
+    @{listElements}    SeleniumLibrary.Get WebElements    locator=${locator}
+    ${listOfItems}    BuiltIn.Create List
+    FOR    ${element}    IN    @{listElements}
+        ${value}    SeleniumLibrary.Get Text    ${element}
+        Collections.Append To List    ${listOfItems}
+        ...                           ${value}
+    END
+    [Return]    ${listOfItems}
