@@ -4,6 +4,7 @@ Resource    ../../import.resource
 *** Variables ***
 ${ALERT_TITLE_LOCATOR}    //div[@class='panel-heading']
 ${ALERT_TEXT_LOCATOR}     //div[@class='panel-heading']/following-sibling::div
+${BUTTON_ACCEPT_COOCKIE}  //button[@class='stick-footer-panel__link']
 
 *** Keywords ***
 Get Unique Page Element
@@ -27,6 +28,7 @@ Format Date From Timestamp
     ...            ${date_format}
     ${formatted_list}    BuiltIn.Create List
     FOR    ${item}    IN    @{time_stamp_list}
+        ${item}    BuiltIn.Evaluate    ${item} - ${MINSK_TIMEZONE_OFFSET_IN_SECONDS}
         ${item}    CustomDatetime.Get Date From Timestamp In Format    timeStamp=${item}
         ...                                                            date_format=${date_format}
         Collections.Append To List    ${formatted_list}
@@ -58,3 +60,14 @@ Round The List
         ...                           ${item}
     END
     [Return]    ${round_list}
+
+Accept All Cookies
+    [Documentation]    Accept all cookies on via UI
+    SeleniumLibrary.Wait Until Element Is Visible    locator=${BUTTON_ACCEPT_COOCKIE}
+    SeleniumLibrary.Click Element    locator=${BUTTON_ACCEPT_COOCKIE}
+    Common.Wait Cookie Bar Is Not Displayed
+
+Wait Cookie Bar Is Not Displayed
+    [Documentation]    Wait until the cookie bar will not be displayed to manipulate the DOM elements
+    SeleniumLibrary.Wait Until Element Is Not Visible    locator=${BUTTON_ACCEPT_COOCKIE}
+    ...                                                  timeout=15

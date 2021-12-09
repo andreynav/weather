@@ -66,12 +66,12 @@ Verify City Is
     ...                                    city=${city_name}
 
 Get From 8 Days Forecast List Of Items
-    [Documentation]    Get array of 8 certain ${item} from 8 days forecast setion
+    [Documentation]    Get array of 8 certain ${item} from 8 days forecast section
     [Arguments]    ${item}
     ${locator}    BuiltIn.Set Variable If
-    ...    '${item}' == 'Dates'    ${MAIN_8DAY_FORECAST_LISTDATES_LOCATOR}
-    ...    '${item}' == 'Temperature_Range'    ${MAIN_8DAY_FORECAST_LISTTEMPS_LOCATOR}
-    ...    '${item}' == 'Weather_Description'    ${MAIN_8DAY_FORECAST_LISTDESCR_LOCATOR}
+    ...    '${item}' == 'Dates'    ${MAIN_FORECAST_LISTDATES_LOCATOR}
+    ...    '${item}' == 'Temperature_Range'    ${MAIN_FORECAST_LISTTEMPS_LOCATOR}
+    ...    '${item}' == 'Weather_Description'    ${MAIN_FORECAST_LISTDESCR_LOCATOR}
     ${list}    MainPage.Get List Of Forecast Items    locator=${locator}
     [Return]    ${list}
 
@@ -80,7 +80,7 @@ Verify API And UI List Of Forecast Dates Are Matches
     [Arguments]    ${api_list}
     ...            ${ui_list}
     ${listFormattedDatesApi}    Common.Format Date From Timestamp    time_stamp_list=${api_list}
-    ...                                                              date_format=${MAIN_8DAY_FORECAST_DFORMAT}
+    ...                                                              date_format=${MAIN_FORECAST_DFORMAT}
     BuiltIn.Should Be Equal As Strings    ${listFormattedDatesApi}
     ...                                   ${ui_list}
     ...                                   The items is wrong
@@ -103,3 +103,58 @@ Verify API And UI List Of Forecast Descriptions Are Matches
     BuiltIn.Should Be Equal As Strings    ${api_list}
     ...                                   ${ui_list}
     ...                                   The items is wrong
+
+#TODO: add check for current day
+Open Forecast Detail Section For Day
+    [Documentation]    Open forecast detail section for day number ${day}
+    [Arguments]    ${day}
+    MainPage.Scroll Until Element Is Displayed    locator=${MAIN_LOGOS_BAR_LOCATOR}
+    MainPage.Select Forecast Section Row For Day    ${day}
+
+Get From Forecast Detail Section Item
+    [Documentation]    Get certain ${item} from forecast detail section
+    [Arguments]    ${item}
+    ${item_value}    MainPage.Get Detail Section Value For Item    ${item}
+    [Return]    ${item_value}
+
+Verify API And UI Detail Section Items Are Matches
+    [Documentation]    Verify the API and UI detail section items are equals
+    [Arguments]    ${api_list_items}
+    ...            ${ui_item}
+    ...            ${day}
+    ${list_formatted_item_api}    Common.Format Date From Timestamp    time_stamp_list=${api_list_items}
+    ...                                                                date_format=${MAIN_SUNRISE_FORMAT}
+    ${computed_day}    BuiltIn.Evaluate    ${day} - 1
+    BuiltIn.Should Be Equal As Strings    first=${list_formatted_item_api}[${computed_day}]
+    ...                                   second=${ui_item}
+    ...                                   msg=The items is wrong
+    ...                                   ignore_case=True
+
+Select Scroll Detail Section Day
+    #TODO: refactor it!!!!!!!!!!!!!!!! Need check for verify date or not?
+    [Documentation]    Select ${day} in scroll detail section
+    [Arguments]    ${day}
+    ${list_formatted_day_api}    Common.Format Date From Timestamp    time_stamp_list=${list_dates_api}
+    ...                                                               date_format=${MAIN_SCROLLBAR_DAY_FORMAT}
+    ${dict_of_days}    BuiltIn.Evaluate    dict(enumerate(${list_formatted_day_api}, start=1))
+    ${day}    BuiltIn.Convert To Number    ${day}
+    ${calculated_value_from_dict_api}    Collections.Get From Dictionary    dictionary=${dict_of_days}
+    ...                                                                     key=${day}
+    MainPage.Scroll Until Element Is Displayed    locator=//li[contains(text(),'${calculated_value_from_dict_api}')]
+    SeleniumLibrary.Click Element    locator=//li[contains(text(),'${calculated_value_from_dict_api}')]
+    MainPage.Scroll Until Element Is Displayed    locator=${MAIN_LOGOS_BAR_LOCATOR}
+    Sleep    2
+
+Select Day And Verify API And UI Data Are Matches
+    #TODO: refactor it!!!!!!!!!!!!!!!! Need check for verify date or not?
+    [Documentation]    #####
+    [Arguments]    ${day}
+    MainStep.Select Scroll Detail Section Day    day=${day}
+    ${sunrise_ui}    MainStep.Get From Forecast Detail Section Item    item=Sunrise
+    ${sunset_ui}    MainStep.Get From Forecast Detail Section Item    item=Sunset
+    MainStep.Verify API And UI Detail Section Items Are Matches    api_list_items=${list_sunrise_api}
+    ...                                                            ui_item=${sunrise_ui}
+    ...                                                            day=${day}
+    MainStep.Verify API And UI Detail Section Items Are Matches    api_list_items=${list_sunset_api}
+    ...                                                            ui_item=${sunset_ui}
+    ...                                                            day=${day}

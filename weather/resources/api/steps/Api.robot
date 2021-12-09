@@ -20,6 +20,8 @@ Get From Onecall Api List Of Items
     ...    '${item}' == 'Max_Temperature'    ${ONECALL_JSON_PATH.list_temp_max}
     ...    '${item}' == 'Min_Temperature'    ${ONECALL_JSON_PATH.list_temp_min}
     ...    '${item}' == 'Weather_Description'    ${ONECALL_JSON_PATH.list_description}
+    ...    '${item}' == 'Sunrise'    ${ONECALL_JSON_PATH.sunrise}
+    ...    '${item}' == 'Sunset'    ${ONECALL_JSON_PATH.sunset}
     ${response}    Onecall.Get Onecall Data From Api    ${dict_with_days_forecast}
     RequestsLibrary.Status Should Be    ${CODE_SUCCESS}
     ${value}    JSONLibrary.Get Value From Json    ${response.json()}

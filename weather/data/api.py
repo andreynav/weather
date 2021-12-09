@@ -25,4 +25,7 @@ DICT__ONECALL_JSON_PATH = {"list_dates": "$.daily[*][dt]",
                            "list_icons": "$.daily[*][weather][*][icon]",
                            "list_temp_max": "$.daily[*][temp][max]",
                            "list_temp_min": "$.daily[*][temp][min]",
-                           "list_description": "$.daily[*][weather][*][description]"}
+                           "list_description": "$.daily[*][weather][*][description]",
+                           "sunrise": "$.daily[*][sunrise]",
+                           "sunset": "$.daily[*][sunset]"}
+MINSK_TIMEZONE_OFFSET_IN_SECONDS = 10800

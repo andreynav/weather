@@ -9,9 +9,6 @@ class CustomSelenium(SeleniumLibrary):
         :param locator: locator of Element
         :return: the text value of all elements identified by `locator`
         """
-        return self._get_all_texts(locator)
-
-    def _get_all_texts(self, locator):
         elements = self.find_elements(locator)
         texts = []
         for element in elements:

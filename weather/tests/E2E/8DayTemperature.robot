@@ -4,37 +4,7 @@ Suite Setup       CommonStep.Open Browser And Maximaze
 Suite Teardown    CommonStep.Close Browser
 
 *** Test Cases ***
-Get Weather For City And Compare UI And API Data
-    [Tags]    001
-    [Documentation]    User get weather for city via UI and compare to weather via API
-    [Setup]    Run Keywords    CommonStep.Begin Test Case
-    ...                        Precondition For Test 001
-
-    BuiltIn.Log Many    Step 1: Get weather for city 'Belmopan'
-    ...                 ER 1: Verify the weather data matches the data from the back-end
-
-    MainStep.Select Measure    C
-    MainStep.Search City By Name    ${BELMOPAN}
-    ${temp_ui}    MainStep.Get Temperature For City    ${BELMOPAN}
-    MainStep.Verify API And UI Temperature    ${temp_ui}
-    ...                                       ${temp_via_api}
-
-    BuiltIn.Log Many    Step 2: Get weather via API in 'Fahrenheit' for city 'Belmopan'
-    ${temp_fahrenheit_api}    Api.Get Temperature From Weather Api    ${JSON_PATH.temperature}
-    ...                                                               ${dict_with_temperature_measure_1}
-
-    BuiltIn.Log Many    Step 3: Change the temperature to 'Fahrenheit'
-    ...                 ER 1: Verify the weather data matches the data from the back-end
-
-    MainStep.Select Measure    F
-    ${temp_ui}    MainStep.Get Temperature For City    ${BELMOPAN}
-    MainStep.Verify API And UI Temperature    ${temp_ui}
-    ...                                       ${temp_fahrenheit_api}
-
-    [Teardown]    Run Keywords    User Logout Site
-    ...                           CommonStep.Delete Session
-
-Get 8 Days Forecast
+Get 8 Days Forecast Common Weather
     [Tags]    002
     [Documentation]    User get weather for city via UI and compare to weather via API
     [Setup]    Run Keywords    CommonStep.Begin Test Case
@@ -75,19 +45,6 @@ Get 8 Days Forecast
     ...                           CommonStep.Delete Session
 
 *** Keywords ***
-Precondition For Test 001
-    [Documentation]    Create the dictionaries of parameters
-    ${dict_with_temperature_measure_1}    CreateDict.Create Params Dictionary    q=${BELMOPAN}
-    ...                                                                          appid=${APP_ID}
-    ...                                                                          units=metric
-    ${temp_via_api}    Api.Get Temperature From Weather Api    ${JSON_PATH.temperature}
-    ...                                                        ${dict_with_temperature_measure_1}
-    Set Test Variable    ${temp_via_api}
-    ${dict_with_temperature_measure_1}    CreateDict.Create Params Dictionary    q=${BELMOPAN}
-    ...                                                                          appid=${APP_ID}
-    ...                                                                          units=imperial
-    Set Test Variable    ${dict_with_temperature_measure_1}
-
 Precondition For Test 002
     [Documentation]    Create the dictionary of parameters
     ${dict_with_days_forecast}    CreateDict.Create Params Dictionary    lat=${COORD_MANCHESTER.lat}
@@ -95,4 +52,4 @@ Precondition For Test 002
     ...                                                                  appid=${APP_ID}
     ...                                                                  units=metric
     ...                                                                  exclude=minutely,alerts,hourly
-    Set Test Variable    ${dict_with_days_forecast}
+    BuiltIn.Set Test Variable    ${dict_with_days_forecast}
