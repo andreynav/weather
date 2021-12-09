@@ -19,6 +19,23 @@ Search City By Name
     MainPage.Click Search Button
     MainPage.Select Item From Dropdown By City Name    city_name=${city_name}
 
+Verify City Is
+    [Documentation]    Verify the selected city is ${city_name}
+    [Arguments]    ${city_name}
+    BuiltIn.Wait Until Keyword Succeeds    3x
+    ...                                    3sec
+    ...                                    MainPage.Verify Selected City Is
+    ...                                    city=${city_name}
+
+Search City By Name And Verify Date Is Current
+    [Documentation]    Search ${city_name} for specify ${measure} and verify that result for current date
+    [Arguments]    ${measure}
+    ...            ${city_name}
+    MainStep.Select Measure    measure=${measure}
+    MainStep.Search City By Name    city_name=${city_name}
+    MainStep.Verify City Is    city_name=${city_name}
+    CommonStep.Verify Date Is Current    date_format=${MAIN_CITY_DATE_FORMAT}
+
 Get Temperature For City
     [Documentation]    User temperature value for selected city
     [Arguments]    ${city_name}
@@ -56,14 +73,6 @@ Verify Temperature Measure Is
     BuiltIn.Should Be Equal As Strings    ${parsed_measure}
     ...                                   ${measure}
     ...                                   The measure is wrong
-
-Verify City Is
-    [Documentation]    Verify the selected city is ${city_name}
-    [Arguments]    ${city_name}
-    BuiltIn.Wait Until Keyword Succeeds    3x
-    ...                                    3sec
-    ...                                    MainPage.Verify Selected City Is
-    ...                                    city=${city_name}
 
 Get From 8 Days Forecast List Of Items
     [Documentation]    Get array of 8 certain ${item} from 8 days forecast section
@@ -104,7 +113,6 @@ Verify API And UI List Of Forecast Descriptions Are Matches
     ...                                   ${ui_list}
     ...                                   The items is wrong
 
-#TODO: add check for current day
 Open Forecast Detail Section For Day
     [Documentation]    Open forecast detail section for day number ${day}
     [Arguments]    ${day}
@@ -130,8 +138,20 @@ Verify API And UI Detail Section Items Are Matches
     ...                                   msg=The items is wrong
     ...                                   ignore_case=True
 
+Select Day In Forecast List And Verify API And UI Data Are Matches
+    [Documentation]    Select {day} and verify that API and UI data are mathes for it
+    [Arguments]    ${day}
+    MainStep.Open Forecast Detail Section For Day    day=${day}
+    ${sunrise_ui}    MainStep.Get From Forecast Detail Section Item    item=Sunrise
+    ${sunset_ui}    MainStep.Get From Forecast Detail Section Item    item=Sunset
+    MainStep.Verify API And UI Detail Section Items Are Matches    api_list_items=${list_sunrise_api}
+    ...                                                            ui_item=${sunrise_ui}
+    ...                                                            day=${day}
+    MainStep.Verify API And UI Detail Section Items Are Matches    api_list_items=${list_sunset_api}
+    ...                                                            ui_item=${sunset_ui}
+    ...                                                            day=${day}
+
 Select Scroll Detail Section Day
-    #TODO: refactor it!!!!!!!!!!!!!!!! Need check for verify date or not?
     [Documentation]    Select ${day} in scroll detail section
     [Arguments]    ${day}
     ${list_formatted_day_api}    Common.Format Date From Timestamp    time_stamp_list=${list_dates_api}
@@ -143,11 +163,9 @@ Select Scroll Detail Section Day
     MainPage.Scroll Until Element Is Displayed    locator=//li[contains(text(),'${calculated_value_from_dict_api}')]
     SeleniumLibrary.Click Element    locator=//li[contains(text(),'${calculated_value_from_dict_api}')]
     MainPage.Scroll Until Element Is Displayed    locator=${MAIN_LOGOS_BAR_LOCATOR}
-    Sleep    2
 
-Select Day And Verify API And UI Data Are Matches
-    #TODO: refactor it!!!!!!!!!!!!!!!! Need check for verify date or not?
-    [Documentation]    #####
+Select Day In Scrollbar And Verify API And UI Data Are Matches
+    [Documentation]    Select {day} and verify that API and UI data are mathes for it
     [Arguments]    ${day}
     MainStep.Select Scroll Detail Section Day    day=${day}
     ${sunrise_ui}    MainStep.Get From Forecast Detail Section Item    item=Sunrise

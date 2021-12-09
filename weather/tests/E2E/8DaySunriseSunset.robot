@@ -14,45 +14,34 @@ Get 8 Days Forecast Sunrise And Sunset
     ...                 ER 1: Verify the city name is displayed
     ...                 ER 2: Verify the current date is displayed
 
-    MainStep.Select Measure    measure=C
-    MainStep.Search City By Name    city_name=${MANCHESTER}
-    MainStep.Verify City Is    city_name=${MANCHESTER}
-    CommonStep.Verify Date Is Current    date_format=${MAIN_CITY_DATE_FORMAT}
+    MainStep.Search City By Name And Verify Date Is Current    measure=C
+    ...                                                        city_name=${MANCHESTER}
 
     BuiltIn.Log Many    Step 2: Open weather details weather for 8 days via API for city 'Manchester, GB'
     ...                 ER 1: Verify the UI weather sunrise data matches the data from the back-end
     ...                 ER 2: Verify the UI weather sunset data matches the data from the back-end
 
-    BuiltIn.Set Task Variable    ${step2_day}    1
-    MainStep.Open Forecast Detail Section For Day    day=${step2_day}
-    ${sunrise_ui}    MainStep.Get From Forecast Detail Section Item    item=Sunrise
-    ${sunset_ui}    MainStep.Get From Forecast Detail Section Item    item=Sunset
-    MainStep.Verify API And UI Detail Section Items Are Matches    api_list_items=${list_sunrise_api}
-    ...                                                            ui_item=${sunrise_ui}
-    ...                                                            day=${step2_day}
-    MainStep.Verify API And UI Detail Section Items Are Matches    api_list_items=${list_sunset_api}
-    ...                                                            ui_item=${sunset_ui}
-    ...                                                            day=${step2_day}
+    MainStep.Select Day In Forecast List And Verify API And UI Data Are Matches    day=1
 
     BuiltIn.Log Many    Step 3: Select the next day in scrollbar of weather details for 8 days section
     ...                 ER 1: Verify the UI weather sunrise data matches the data from the back-end
     ...                 ER 2: Verify the UI weather sunset data matches the data from the back-end
 
-    MainStep.Select Day And Verify API And UI Data Are Matches    day=2
-    MainStep.Select Day And Verify API And UI Data Are Matches    day=3
-    MainStep.Select Day And Verify API And UI Data Are Matches    day=4
-    MainStep.Select Day And Verify API And UI Data Are Matches    day=5
-    MainStep.Select Day And Verify API And UI Data Are Matches    day=6
-    MainStep.Select Day And Verify API And UI Data Are Matches    day=7
-    MainStep.Select Day And Verify API And UI Data Are Matches    day=8
+    MainStep.Select Day In Scrollbar And Verify API And UI Data Are Matches    day=2
+    MainStep.Select Day In Scrollbar And Verify API And UI Data Are Matches    day=3
+    MainStep.Select Day In Scrollbar And Verify API And UI Data Are Matches    day=4
+    MainStep.Select Day In Scrollbar And Verify API And UI Data Are Matches    day=5
+    MainStep.Select Day In Scrollbar And Verify API And UI Data Are Matches    day=6
+    MainStep.Select Day In Scrollbar And Verify API And UI Data Are Matches    day=7
+    MainStep.Select Day In Scrollbar And Verify API And UI Data Are Matches    day=8
 
     BuiltIn.Log Many    Step 4: Select the previouse day in scrollbar of weather details for 8 days section
     ...                 ER 1: Verify the UI weather sunrise data matches the data from the back-end
     ...                 ER 2: Verify the UI weather sunset data matches the data from the back-end
 
-    MainStep.Select Day And Verify API And UI Data Are Matches    day=6
-    MainStep.Select Day And Verify API And UI Data Are Matches    day=5
-    MainStep.Select Day And Verify API And UI Data Are Matches    day=4
+    MainStep.Select Day In Scrollbar And Verify API And UI Data Are Matches    day=6
+    MainStep.Select Day In Scrollbar And Verify API And UI Data Are Matches    day=5
+    MainStep.Select Day In Scrollbar And Verify API And UI Data Are Matches    day=4
 
 *** Keywords ***
 Precondition For Test 003

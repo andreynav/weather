@@ -99,7 +99,7 @@ Click Measure Button
     MainPage.Wait Main Page Is Loaded
 
 Get Result City Datetime
-    [Documentation]    #TODO:
+    [Documentation]    Get the result of the datetime string near the sity and return it
     SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_DATETIME_CITY_LOCATOR}
     ${date}    SeleniumLibrary.Get Text    locator=${MAIN_DATETIME_CITY_LOCATOR}
     ${parsedDate}    String.Split String    string=${date}
@@ -107,7 +107,7 @@ Get Result City Datetime
     [Return]    ${parsedDate}[0]
 
 Get List Of Forecast Items
-    [Documentation]    #TODO:
+    [Documentation]    Get list of forecast items and return it
     [Arguments]    ${locator}
     SeleniumLibrary.Wait Until Element Is Visible    locator=${locator}
     SeleniumLibrary.Get Element Count    locator=${locator}
@@ -123,7 +123,6 @@ Get List Of Forecast Items
 Select Forecast Section Row For Day
     [Documentation]    Select a row with ${number} in 8 day forecast section
     [Arguments]    ${day}
-    #MainPage.Scroll Until Element Is Displayed    locator=${MAIN_LOGOS_BAR_LOCATOR}
     ${locator}    MainPage.Get Forecast Detail Section Row Locator For Day    ${day}
     SeleniumLibrary.Wait Until Element Is Visible    locator=${locator}
     SeleniumLibrary.Click Element    locator=${locator}
@@ -138,7 +137,6 @@ Scroll Until Element Is Displayed
 Get Forecast Detail Section Row Locator For Day
     [Documentation]    Get the locator for schevrone ${number} in the forecast detail section
     [Arguments]    ${number}
-    #/descendant::span[@class='chevron-container'][${number}]/*[name()='svg']
     ${locator}    BuiltIn.Set Variable    //ul[@class='day-list']/li[${number}]
     [Return]    ${locator}
 
@@ -158,10 +156,3 @@ Get Detail Section Value For Item
     SeleniumLibrary.Wait Until Element Is Visible    locator=${locator}
     ${item_value}    SeleniumLibrary.Get Text    locator=${locator}
     [Return]    ${item_value}
-
-#Scroll To Element    не нужен
-#    [Arguments]  ${locator}
-#    ${x}    SeleniumLibrary.Get Horizontal Position  ${locator}
-#    ${y}    SeleniumLibrary.Get Vertical Position    ${locator}
-#    ${newY}    BuiltIn.Evaluate    ${y}-100
-#    SeleniumLibrary.Execute Javascript  window.scrollTo(${x}, ${newY})
