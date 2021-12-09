@@ -14,10 +14,10 @@ Get 8 Days Forecast Sunrise And Sunset
     ...                 ER 1: Verify the city name is displayed
     ...                 ER 2: Verify the current date is displayed
 
-    MainStep.Select Measure    C
-    MainStep.Search City By Name    ${MANCHESTER}
-    MainStep.Verify City Is    ${MANCHESTER}
-    CommonStep.Verify Date Is Current    ${CITY_DATE_FORMAT}
+    MainStep.Select Measure    measure=C
+    MainStep.Search City By Name    city_name=${MANCHESTER}
+    MainStep.Verify City Is    city_name=${MANCHESTER}
+    CommonStep.Verify Date Is Current    date_format=${CITY_DATE_FORMAT}
 
     BuiltIn.Log Many    Step 2: Open weather details weather for 8 days via API for city 'Manchester, GB'
     ...                 ER 1: Verify the UI weather sunrise data matches the data from the back-end

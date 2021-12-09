@@ -34,13 +34,13 @@ Verify Unique Page Element
 Begin Test Case
     [Documentation]    Login to the app and to be at the Main page
     LoginStep.Go To Sign In Page
-    LoginStep.Login With Credentials    ${USER_CREDENTIALS.email}
-    ...                                 ${USER_CREDENTIALS.password}
+    LoginStep.Login With Credentials    email=${USER_CREDENTIALS.email}
+    ...                                 password=${USER_CREDENTIALS.password}
     MainStep.Go To Main Page
     MainStep.Verify Main Page Is Opened
 
 Verify Date Is Current
-    [Documentation]    # TODO:
+    [Documentation]    Verify the date is current date
     [Arguments]    ${date_format}
     ${parsedDate}    CustomDatetime.Get Current Date    date_format=${date_format}
     ${parsedDateUI}    MainPage.Get Result City Datetime

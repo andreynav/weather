@@ -13,23 +13,23 @@ Get Temperature For City And Compare UI And API Data
     BuiltIn.Log Many    Step 1: Get weather for city 'Belmopan'
     ...                 ER 1: Verify the weather data matches the data from the back-end
 
-    MainStep.Select Measure    C
-    MainStep.Search City By Name    ${BELMOPAN}
-    ${temp_ui}    MainStep.Get Temperature For City    ${BELMOPAN}
-    MainStep.Verify API And UI Temperature    ${temp_ui}
-    ...                                       ${temp_via_api}
+    MainStep.Select Measure    measure=C
+    MainStep.Search City By Name    city_name=${BELMOPAN}
+    ${temp_ui}    MainStep.Get Temperature For City    city_name=${BELMOPAN}
+    MainStep.Verify API And UI Temperature    temp_ui=${temp_ui}
+    ...                                       temp_api=${temp_via_api}
 
     BuiltIn.Log Many    Step 2: Get weather via API in 'Fahrenheit' for city 'Belmopan'
-    ${temp_fahrenheit_api}    Api.Get Temperature From Weather Api    ${JSON_PATH.temperature}
-    ...                                                               ${dict_with_temperature_measure_2}
+    ${temp_fahrenheit_api}    Api.Get Temperature From Weather Api    json_path=${JSON_PATH.temperature}
+    ...                                                               params=${dict_with_temperature_measure_2}
 
     BuiltIn.Log Many    Step 3: Change the temperature to 'Fahrenheit'
     ...                 ER 1: Verify the weather data matches the data from the back-end
 
-    MainStep.Select Measure    F
-    ${temp_ui}    MainStep.Get Temperature For City    ${BELMOPAN}
-    MainStep.Verify API And UI Temperature    ${temp_ui}
-    ...                                       ${temp_fahrenheit_api}
+    MainStep.Select Measure    measure=F
+    ${temp_ui}    MainStep.Get Temperature For City    city_name=${BELMOPAN}
+    MainStep.Verify API And UI Temperature    temp_ui=${temp_ui}
+    ...                                       temp_api=${temp_fahrenheit_api}
 
     [Teardown]    Run Keywords    User Logout Site
     ...                           CommonStep.Delete Session
@@ -40,8 +40,8 @@ Precondition For Test 001
     ${dict_with_temperature_measure_1}    CreateDict.Create Params Dictionary    q=${BELMOPAN}
     ...                                                                          appid=${APP_ID}
     ...                                                                          units=metric
-    ${temp_via_api}    Api.Get Temperature From Weather Api    ${JSON_PATH.temperature}
-    ...                                                        ${dict_with_temperature_measure_1}
+    ${temp_via_api}    Api.Get Temperature From Weather Api    json_path=${JSON_PATH.temperature}
+    ...                                                        params=${dict_with_temperature_measure_1}
     BuiltIn.Set Test Variable    ${temp_via_api}
     ${dict_with_temperature_measure_2}    CreateDict.Create Params Dictionary    q=${BELMOPAN}
     ...                                                                          appid=${APP_ID}
