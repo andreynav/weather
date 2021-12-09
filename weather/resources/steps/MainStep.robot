@@ -80,7 +80,7 @@ Verify API And UI List Of Forecast Dates Are Matches
     [Arguments]    ${api_list}
     ...            ${ui_list}
     ${listFormattedDatesApi}    Common.Format Date From Timestamp    time_stamp_list=${api_list}
-    ...                                                              date_format=${MAIN_FORECAST_DFORMAT}
+    ...                                                              date_format=${MAIN_FORECAST_DAY_FORMAT}
     BuiltIn.Should Be Equal As Strings    ${listFormattedDatesApi}
     ...                                   ${ui_list}
     ...                                   The items is wrong
@@ -135,7 +135,7 @@ Select Scroll Detail Section Day
     [Documentation]    Select ${day} in scroll detail section
     [Arguments]    ${day}
     ${list_formatted_day_api}    Common.Format Date From Timestamp    time_stamp_list=${list_dates_api}
-    ...                                                               date_format=${MAIN_SCROLLBAR_DAY_FORMAT}
+    ...                                                               date_format=${MAIN_FORECAST_DAY_FORMAT}
     ${dict_of_days}    BuiltIn.Evaluate    dict(enumerate(${list_formatted_day_api}, start=1))
     ${day}    BuiltIn.Convert To Number    ${day}
     ${calculated_value_from_dict_api}    Collections.Get From Dictionary    dictionary=${dict_of_days}

@@ -14,10 +14,10 @@ CODE_SUCCESS = '200'
 BELMOPAN = 'Belmopan, BZ'
 BELMOPAN_ID = '3582672'
 DICT__COORD_BELMOPAN = {"lon": "-88.7667", "lat": "17.25"}
-DICT__JSON_PATH = {"name": "$.name",
-                   "lon": "$.coord.lon",
-                   "lat": "$.coord.lat",
-                   "temperature": "$.main.temp"}
+DICT__WEATHER_JSON_PATH = {"name": "$.name",
+                           "lon": "$.coord.lon",
+                           "lat": "$.coord.lat",
+                           "temperature": "$.main.temp"}
 MANCHESTER = 'Manchester, GB'
 MANCHESTER_ID = '3582672'
 DICT__COORD_MANCHESTER = {"lon": "-2.2374", "lat": "53.4809"}

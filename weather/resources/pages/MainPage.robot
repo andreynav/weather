@@ -9,19 +9,16 @@ ${MAIN_SEARCH_BUTTON_LOCATOR}                       //button[text()='Search']
 ${MAIN_TEMPERATURE_CITY_LOCATOR}                    //div[@class='section-content']//h2
 ${MAIN_DATETIME_CITY_LOCATOR}                       //div[@class='section-content']//span[@class='orange-text']
 ${MAIN_TEMPERATURE_RESULT_LOCATOR}                  //span[@class='heading']
-${SEPARATOR_1}                                      °
-${SEPARATOR_2}                                      ,
+@{MAIN_SEPARATORS}                                  °    ,
 ${MAIN_METRIC_BUTTON_LOCATOR}                       //div[contains(text(),"Metric")]
 ${MAIN_IMPERIAL_BUTTON_LOCATOR}                     //div[contains(text(),"Imperial")]
 ${MAIN_LOADER_LOCATOR}                              //div[@class='owm-loader']
-${CITY_DATE_FORMAT}                                 %b %-d
-${MAIN_FORECAST_DFORMAT}                            %a, %b %d
+${MAIN_CITY_DATE_FORMAT}                            %b %-d
+${MAIN_FORECAST_DAY_FORMAT}                         %a, %b %d
 ${MAIN_SUNRISE_FORMAT}                              %I:%M%p
-${MAIN_SCROLLBAR_DAY_FORMAT}                        %a, %b %d
 ${MAIN_FORECAST_LISTDATES_LOCATOR}                  //ul[@class='day-list']/li/span
 ${MAIN_FORECAST_LISTTEMPS_LOCATOR}                  //div[@class='day-list-values']/div/span
 ${MAIN_FORECAST_LISTDESCR_LOCATOR}                  //span[@class='sub']
-#${MAIN_8DAY_FORECAST_LISTSCHEVRON_LOCATOR}         //span[@class='chevron-container']
 ${MAIN_FORECAST_LISTROWS_LOCATOR}                   //ul[@class='day-list']
 ${MAIN_FORECAST_SUNRISE_LABEL_LOCATOR}              //span[contains(text(),"Sunrise")]
 ${MAIN_FORECAST_SUNRISE_VALUE_LOCATOR}              //span[contains(text(),"Sunrise")]/following-sibling::span
@@ -29,7 +26,6 @@ ${MAIN_FORECAST_SUNSET_LABEL_LOCATOR}               //span[contains(text(),"Suns
 ${MAIN_FORECAST_SUNSET_VALUE_LOCATOR}               //span[contains(text(),"Sunset")]/following-sibling::span
 ${MAIN_FORECAST_SCROLCONTAINER_SCHEVRON_LOCATOR}    //div[@class='scrolling-container-header']/span[@class='chevron-container']
 ${MAIN_LOGOS_BAR_LOCATOR}                           //div[@class='section-content mobile-padding']
-${day7}                                             //li[contains(text(),'Tue, Dec 14')]
 
 *** Keywords ***
 Go To Main Page
@@ -72,7 +68,7 @@ Get Search Temperature
     SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_TEMPERATURE_RESULT_LOCATOR}
     ${temperature}    SeleniumLibrary.Get Text    locator=${MAIN_TEMPERATURE_RESULT_LOCATOR}
     ${parsedTemperature}    String.Split String    string=${temperature}
-    ...                                            separator=${SEPARATOR_1}
+    ...                                            separator=${MAIN_SEPARATORS}[0]
     [Return]    ${parsedTemperature}[0]
 
 Get Result Temperature Measure
@@ -80,7 +76,7 @@ Get Result Temperature Measure
     SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_TEMPERATURE_RESULT_LOCATOR}
     ${temperature}    SeleniumLibrary.Get Text    locator=${MAIN_TEMPERATURE_RESULT_LOCATOR}
     ${parsedMeasure}    String.Split String    string=${temperature}
-    ...                                        separator=${SEPARATOR_1}
+    ...                                        separator=${MAIN_SEPARATORS}[0]
     [Return]    ${parsedMeasure}[1]
 
 Verify Selected City Is
@@ -88,8 +84,6 @@ Verify Selected City Is
     [Arguments]    ${city}
     SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_TEMPERATURE_CITY_LOCATOR}
     ${selectedCity}    SeleniumLibrary.Get Text    locator=${MAIN_TEMPERATURE_CITY_LOCATOR}
-    #${parsedSelectedCity}    String.Split String    string=${selectedCity}    separator=${SEPARATOR_2}
-    #BuiltIn.Should Be Equal As Strings    ${parsedSelectedCity}[0]
     BuiltIn.Should Be Equal As Strings    ${selectedCity}
     ...                                   ${city}
     ...                                   The city is wrong
@@ -109,7 +103,7 @@ Get Result City Datetime
     SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_DATETIME_CITY_LOCATOR}
     ${date}    SeleniumLibrary.Get Text    locator=${MAIN_DATETIME_CITY_LOCATOR}
     ${parsedDate}    String.Split String    string=${date}
-    ...                                     separator=${SEPARATOR_2}
+    ...                                     separator=${MAIN_SEPARATORS}[1]
     [Return]    ${parsedDate}[0]
 
 Get List Of Forecast Items
@@ -117,7 +111,6 @@ Get List Of Forecast Items
     [Arguments]    ${locator}
     SeleniumLibrary.Wait Until Element Is Visible    locator=${locator}
     SeleniumLibrary.Get Element Count    locator=${locator}
-    #@{listElements}    CustomSelenium.Get All Text From Element    locator=${locator}    #WTF?????
     @{listElements}    SeleniumLibrary.Get WebElements    locator=${locator}
     ${listOfItems}    BuiltIn.Create List
     FOR    ${element}    IN    @{listElements}

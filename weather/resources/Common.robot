@@ -14,7 +14,7 @@ Get Unique Page Element
     ${value}    SeleniumLibrary.Get Text    locator=${locator}
     [Return]    ${value}
 
-Get Random Measure Except
+Get Random Measure Except Item
     [Documentation]    Get random temperature measure from exisitng measures except getting as parameter
     [Arguments]    ${existing_measure}
     ${unit_keys}    Collections.Get Dictionary Keys    ${UNITS}

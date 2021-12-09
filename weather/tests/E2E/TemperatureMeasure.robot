@@ -20,7 +20,7 @@ Get Temperature For City And Compare UI And API Data
     ...                                       temp_api=${temp_via_api}
 
     BuiltIn.Log Many    Step 2: Get weather via API in 'Fahrenheit' for city 'Belmopan'
-    ${temp_fahrenheit_api}    Api.Get Temperature From Weather Api    json_path=${JSON_PATH.temperature}
+    ${temp_fahrenheit_api}    Api.Get Temperature From Weather Api    json_path=${WEATHER_JSON_PATH.temperature}
     ...                                                               params=${dict_with_temperature_measure_2}
 
     BuiltIn.Log Many    Step 3: Change the temperature to 'Fahrenheit'
@@ -40,7 +40,7 @@ Precondition For Test 001
     ${dict_with_temperature_measure_1}    CreateDict.Create Params Dictionary    q=${BELMOPAN}
     ...                                                                          appid=${APP_ID}
     ...                                                                          units=metric
-    ${temp_via_api}    Api.Get Temperature From Weather Api    json_path=${JSON_PATH.temperature}
+    ${temp_via_api}    Api.Get Temperature From Weather Api    json_path=${WEATHER_JSON_PATH.temperature}
     ...                                                        params=${dict_with_temperature_measure_1}
     BuiltIn.Set Test Variable    ${temp_via_api}
     ${dict_with_temperature_measure_2}    CreateDict.Create Params Dictionary    q=${BELMOPAN}
