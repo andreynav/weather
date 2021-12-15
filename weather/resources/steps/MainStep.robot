@@ -19,7 +19,7 @@ Search City By Name
     MainPage.Click Search Button
     MainPage.Select Item From Dropdown By City Name    city_name=${city_name}
 
-Verify City Is
+Verify Selected City Is
     [Documentation]    Verify the selected city is ${city_name}
     [Arguments]    ${city_name}
     BuiltIn.Wait Until Keyword Succeeds    3x
@@ -33,7 +33,7 @@ Search City By Name And Verify Date Is Current
     ...            ${city_name}
     MainStep.Select Measure    measure=${measure}
     MainStep.Search City By Name    city_name=${city_name}
-    MainStep.Verify City Is    city_name=${city_name}
+    MainStep.Verify Selected City Is    city_name=${city_name}
     CommonStep.Verify Date Is Current    date_format=${MAIN_CITY_DATE_FORMAT}
 
 Get Temperature For City
@@ -139,7 +139,7 @@ Verify API And UI Detail Section Items Are Matches
     ...                                   ignore_case=True
 
 Select Day In Forecast List And Verify API And UI Data Are Matches
-    [Documentation]    Select {day} and verify that API and UI data are mathes for it
+    [Documentation]    Select ${day} and verify that API and UI data are mathes for it
     [Arguments]    ${day}
     MainStep.Open Forecast Detail Section For Day    day=${day}
     ${sunrise_ui}    MainStep.Get From Forecast Detail Section Item    item=Sunrise
