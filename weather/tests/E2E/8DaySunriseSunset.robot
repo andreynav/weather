@@ -51,11 +51,11 @@ Precondition For Test 003
     ...                                                                  appid=${APP_ID}
     ...                                                                  units=metric
     ...                                                                  exclude=minutely,alerts,hourly
-    BuiltIn.Set Test Variable    ${dict_with_days_forecast}
     ${list_dates_api}    Api.Get From Onecall Api List Of Items    item=Dates
-    BuiltIn.Set Test Variable    ${list_dates_api}
     ${list_sunrise_api}    Api.Get From Onecall Api List Of Items    item=Sunrise
-    BuiltIn.Set Test Variable    ${list_sunrise_api}
     ${list_sunset_api}    Api.Get From Onecall Api List Of Items    item=Sunset
-    BuiltIn.Set Test Variable    ${list_sunset_api}
     Common.Accept All Cookies
+    BuiltIn.Set Test Variable    ${dict_with_days_forecast}
+    BuiltIn.Set Test Variable    ${list_dates_api}
+    BuiltIn.Set Test Variable    ${list_sunrise_api}
+    BuiltIn.Set Test Variable    ${list_sunset_api}

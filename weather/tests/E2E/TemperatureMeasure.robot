@@ -42,9 +42,9 @@ Precondition For Test 001
     ...                                                                          units=metric
     ${temp_via_api}    Api.Get Temperature From Weather Api    json_path=${WEATHER_JSON_PATH.temperature}
     ...                                                        params=${dict_with_temperature_measure_1}
-    BuiltIn.Set Test Variable    ${temp_via_api}
     ${dict_with_temperature_measure_2}    CreateDict.Create Params Dictionary    q=${BELMOPAN}
     ...                                                                          appid=${APP_ID}
     ...                                                                          units=imperial
+    BuiltIn.Set Test Variable    ${temp_via_api}
     BuiltIn.Set Test Variable    ${dict_with_temperature_measure_2}
 
