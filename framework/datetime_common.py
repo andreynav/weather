@@ -1,5 +1,6 @@
 from robot.api.deco import keyword
 from datetime import datetime
+import time
 
 
 @keyword(name="Get Current Date")
@@ -10,8 +11,8 @@ def get_current_date_in_format(date_format: str) -> str:
     :return: date in specific format
     :raises ValueError: thrown if the current parameters are unknown
     """
-    now = datetime.now()
-    return now.strftime(date_format)
+    now_minsk_tz = datetime.fromtimestamp(time.time())
+    return now_minsk_tz.strftime(date_format)
 
 
 @keyword(name="Get Date From Timestamp In Format")
