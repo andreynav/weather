@@ -1,4 +1,5 @@
 from robot.api.deco import keyword
+from weather.data.api import MINSK_TIMEZONE_OFFSET_IN_SECONDS
 from datetime import datetime
 import time
 
@@ -11,7 +12,7 @@ def get_current_date_in_format(date_format: str) -> str:
     :return: date in specific format
     :raises ValueError: thrown if the current parameters are unknown
     """
-    now_minsk_tz = datetime.fromtimestamp(time.time())
+    now_minsk_tz = datetime.fromtimestamp(time.time() - MINSK_TIMEZONE_OFFSET_IN_SECONDS)
     return now_minsk_tz.strftime(date_format)
 
 
