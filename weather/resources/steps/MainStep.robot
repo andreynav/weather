@@ -27,14 +27,13 @@ Verify Selected City Is
     ...                                    MainPage.Verify Selected City Is
     ...                                    city=${city_name}
 
-Search City By Name And Verify Date Is Current
+Search City By Name And Verify City Name Is Displayed
     [Documentation]    Search ${city_name} for specify ${measure} and verify that result for current date
     [Arguments]    ${measure}
     ...            ${city_name}
     MainStep.Select Measure    measure=${measure}
     MainStep.Search City By Name    city_name=${city_name}
     MainStep.Verify Selected City Is    city_name=${city_name}
-    CommonStep.Verify Date Is Current    date_format=${MAIN_CITY_DATE_FORMAT}
 
 Get Temperature For City
     [Documentation]    User temperature value for selected city
@@ -122,7 +121,11 @@ Open Forecast Detail Section For Day
 Get From Forecast Detail Section Item
     [Documentation]    Get certain ${item} from forecast detail section
     [Arguments]    ${item}
-    ${item_value}    MainPage.Get Detail Section Value For Item    ${item}
+    IF    '${item}' == 'Sunrise'
+        ${item_value}    MainPage.Get Detail Section Value For Sunrise
+    ELSE IF    '${item}' == 'Sunset'
+        ${item_value}    MainPage.Get Detail Section Value For Sunnset
+    END
     [Return]    ${item_value}
 
 Verify API And UI Detail Section Items Are Matches
@@ -165,14 +168,17 @@ Select Scroll Detail Section Day
     MainPage.Scroll Until Element Is Displayed    locator=${MAIN_LOGOS_BAR_LOCATOR}
 
 Select Day In Scrollbar And Verify API And UI Data Are Matches
-    [Documentation]    Select {day} and verify that API and UI data are mathes for it
-    [Arguments]    ${day}
-    MainStep.Select Scroll Detail Section Day    day=${day}
-    ${sunrise_ui}    MainStep.Get From Forecast Detail Section Item    item=Sunrise
-    ${sunset_ui}    MainStep.Get From Forecast Detail Section Item    item=Sunset
-    MainStep.Verify API And UI Detail Section Items Are Matches    api_list_items=${list_sunrise_api}
-    ...                                                            ui_item=${sunrise_ui}
-    ...                                                            day=${day}
-    MainStep.Verify API And UI Detail Section Items Are Matches    api_list_items=${list_sunset_api}
-    ...                                                            ui_item=${sunset_ui}
-    ...                                                            day=${day}
+    [Documentation]    Select day from day's list and verify that API and UI data are mathes for it
+    [Arguments]    ${list_days}
+    FOR    ${day}    IN    @{list_days}
+        MainStep.Select Scroll Detail Section Day    day=${day}
+        ${sunrise_ui}    MainStep.Get From Forecast Detail Section Item    item=Sunrise
+        ${sunset_ui}    MainStep.Get From Forecast Detail Section Item    item=Sunset
+        MainStep.Verify API And UI Detail Section Items Are Matches    api_list_items=${list_sunrise_api}
+        ...                                                            ui_item=${sunrise_ui}
+        ...                                                            day=${day}
+        MainStep.Verify API And UI Detail Section Items Are Matches    api_list_items=${list_sunset_api}
+        ...                                                            ui_item=${sunset_ui}
+        ...                                                            day=${day}
+    END
+

@@ -14,7 +14,7 @@ Get 8 Days Forecast Common Weather
     ...                 ER 1: Verify the city name is displayed
     ...                 ER 2: Verify the current date is displayed
 
-    MainStep.Search City By Name And Verify Date Is Current    measure=C
+    MainStep.Search City By Name And Verify City Name Is Displayed    measure=C
     ...                                                        city_name=${MANCHESTER}
 
     BuiltIn.Log Many    Step 2: Get weather for 8 days via API for city 'Manchester, GB'

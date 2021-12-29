@@ -147,12 +147,14 @@ Wait Detail Section Is Displayed
     ...                                                  expected=display: none;
     SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_FORECAST_SUNRISE_LABEL_LOCATOR}
 
-Get Detail Section Value For Item
-    [Documentation]    Get the value of the ${item} in the detail section and return it
-    [Arguments]    ${item}
-    ${locator}    BuiltIn.Set Variable If
-    ...    '${item}' == 'Sunrise'    ${MAIN_FORECAST_SUNRISE_VALUE_LOCATOR}
-    ...    '${item}' == 'Sunset'    ${MAIN_FORECAST_SUNSET_VALUE_LOCATOR}
-    SeleniumLibrary.Wait Until Element Is Visible    locator=${locator}
-    ${item_value}    SeleniumLibrary.Get Text    locator=${locator}
+Get Detail Section Value For Sunrise
+    [Documentation]    Get the value of the sunrise item in the detail section and return it
+    SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_FORECAST_SUNRISE_VALUE_LOCATOR}
+    ${item_value}    SeleniumLibrary.Get Text    locator=${MAIN_FORECAST_SUNRISE_VALUE_LOCATOR}
+    [Return]    ${item_value}
+
+Get Detail Section Value For Sunnset
+    [Documentation]    Get the value of the sunset item in the detail section and return it
+    SeleniumLibrary.Wait Until Element Is Visible    locator=${MAIN_FORECAST_SUNSET_VALUE_LOCATOR}
+    ${item_value}    SeleniumLibrary.Get Text    locator=${MAIN_FORECAST_SUNSET_VALUE_LOCATOR}
     [Return]    ${item_value}
