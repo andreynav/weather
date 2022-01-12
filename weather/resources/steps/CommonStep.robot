@@ -31,3 +31,20 @@ Verify Unique Page Element
     ...                        ${value}
     ...                        The value does not equal required
 
+Begin Test Case
+    [Documentation]    Login to the app and to be at the Main page
+    LoginStep.Go To Sign In Page
+    LoginStep.Login With Credentials    email=${USER_CREDENTIALS.email}
+    ...                                 password=${USER_CREDENTIALS.password}
+    MainStep.Go To Main Page
+    MainStep.Verify Main Page Is Opened
+
+Verify Date Is Current
+    [Documentation]    Verify the date is current date
+    [Arguments]    ${date_format}
+    ${parsedDate}    CustomDatetime.Get Current Date    date_format=${date_format}
+    ${parsedDateUI}    MainPage.Get Result City Datetime
+    BuiltIn.Should Be Equal As Strings    ${parsedDateUI}
+    ...                                   ${parsedDate}
+    ...                                   The date is wrong
+

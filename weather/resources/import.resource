@@ -13,3 +13,4 @@ Resource        steps/ProfileStep.robot
 Resource        Common.robot
 Resource        api/steps/Api.robot
 Resource        api/endpoints/Weather.robot
+Resource        api/endpoints/Onecall.robot
