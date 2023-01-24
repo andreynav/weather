@@ -2,6 +2,7 @@ from robot.api.deco import keyword
 from weather.data.api import MINSK_TIMEZONE_OFFSET_IN_SECONDS
 from datetime import datetime
 import time
+from robot.api.deco import keyword
 
 
 @keyword(name="Get Current Date")
