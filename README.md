@@ -73,7 +73,7 @@ Now place the driver file in a folder anywhere on your machine and add the path 
    
 2. Clone project to your PC by the following command:
 ```bash
-git clone https://github.com/Andrei1982/wp1.git
+git clone https://github.com/andreynav/weather.git
 ```
 
 3. Open the root of the project with the requirements file specified and run the following command:
